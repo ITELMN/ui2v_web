@@ -14,6 +14,10 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
 
 const translations = {
   zh: {
+    // Site Meta
+    "site.title": "Ui2v - 本地 AI 动画设计工具",
+    "site.description": "Ui2v 是一款完全本地运行的 AI 动画设计工具。用自然语言描述想法，AI 即刻生成精美动画。快速、安全、易用。",
+
     // Hero Section
     "hero.badge": "公测开放中",
     "hero.title": "AI 动画创作，从未如此简单",
@@ -82,6 +86,10 @@ const translations = {
     "footer.copyright": "© 2025 Ui2v. 保留所有权利",
   },
   en: {
+    // Site Meta
+    "site.title": "Ui2v - Local AI Animation Design Tool",
+    "site.description": "Ui2v is a fully local AI animation tool. Describe your idea in natural language, AI generates stunning animations instantly. Fast, secure, and easy to use.",
+
     // Hero Section
     "hero.badge": "Public Beta",
     "hero.title": "AI Animation Made Simple",

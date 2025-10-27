@@ -109,15 +109,15 @@ const effects = {
 const meta = {
   home: {
     path: "/",
-    title: "Ui2v - 本地 AI 动画设计工具 | 免费",
+    title: "Ui2v - 本地 AI 动画设计工具",
     description:
-      "Ui2v 是一款免费、本地运行的 AI 动画设计工具。支持多层动画系统、AI智能助手、多渲染引擎，保护隐私。",
-    image: "/images/ui2v-og.jpg",
+      "Ui2v 是一款完全本地运行的 AI 动画设计工具。用自然语言描述想法，AI 即刻生成精美动画。快速、安全、易用。",
+    image: "/images/preview1.png",
     canonical: "https://new.ui2v.com",
     robots: "index,follow",
     alternates: [
       { href: "https://new.ui2v.com", hrefLang: "zh" },
-      { href: "https://new.ui2v.com/en", hrefLang: "en" }
+      { href: "https://new.ui2v.com", hrefLang: "en" }
     ],
   },
   // add more routes and reference them in page.tsx

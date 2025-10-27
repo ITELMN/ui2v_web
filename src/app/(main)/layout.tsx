@@ -8,6 +8,7 @@ import { baseURL, meta, fonts, effects, style, dataStyle } from "@/resources/onc
 import { Meta, Schema,  Column, Flex, opacity, SpacingToken, Background} from "@once-ui-system/core";
 import { Providers } from '@/components/Providers';
 import { Navbar } from '@/components/Navbar';
+import { DynamicTitle } from '@/components/DynamicTitle';
 
 export async function generateMetadata() {
   return Meta.generate({
@@ -108,6 +109,7 @@ export default function RootLayout({
         />
       </head>
       <Providers>
+        <DynamicTitle />
         <Column as="body" background="page" fillWidth margin="0" padding="0">
           <Background
             position="absolute"
