@@ -1,5 +1,5 @@
 // IMPORTANT: Replace with your own domain address - it's used for SEO in meta tags and schema
-const baseURL = "https://demo.once-ui.com";
+const baseURL = "https://new.ui2v.com";
 
 // Import and set font for each variant
 import { Geist } from "next/font/google";
@@ -38,14 +38,14 @@ const fonts = {
 
 // default customization applied to the HTML in the main layout.tsx
 const style = {
-  theme: "system", // dark | light | system
-  neutral: "gray", // sand | gray | slate
-  brand: "blue", // blue | indigo | violet | magenta | pink | red | orange | yellow | moss | green | emerald | aqua | cyan
-  accent: "indigo", // blue | indigo | violet | magenta | pink | red | orange | yellow | moss | green | emerald | aqua | cyan
+  theme: "dark", // dark | light | system
+  neutral: "slate", // sand | gray | slate
+  brand: "violet", // blue | indigo | violet | magenta | pink | red | orange | yellow | moss | green | emerald | aqua | cyan
+  accent: "magenta", // blue | indigo | violet | magenta | pink | red | orange | yellow | moss | green | emerald | aqua | cyan
   solid: "contrast", // color | contrast | inverse
-  solidStyle: "flat", // flat | plastic
+  solidStyle: "plastic", // flat | plastic
   border: "playful", // rounded | playful | conservative
-  surface: "filled", // filled | translucent
+  surface: "translucent", // filled | translucent
   transition: "all", // all | micro | macro
   scaling: "100", // 90 | 95 | 100 | 105 | 110
 };
@@ -66,27 +66,27 @@ const dataStyle = {
 
 const effects = {
   mask: {
-    cursor: false,
+    cursor: true,
     x: 50,
-    y: 0,
-    radius: 100,
+    y: 50,
+    radius: 80,
   },
   gradient: {
-    display: false,
+    display: true,
     x: 50,
-    y: 0,
-    width: 100,
-    height: 100,
-    tilt: 0,
+    y: 30,
+    width: 120,
+    height: 120,
+    tilt: 25,
     colorStart: "brand-background-strong",
-    colorEnd: "static-transparent",
-    opacity: 50,
+    colorEnd: "accent-background-strong",
+    opacity: 30,
   },
   dots: {
     display: true,
     size: "2",
     color: "brand-on-background-weak",
-    opacity: 40,
+    opacity: 30,
   },
   lines: {
     display: false,
@@ -97,11 +97,11 @@ const effects = {
     size: "8",
   },
   grid: {
-    display: false,
+    display: true,
     color: "neutral-alpha-weak",
-    opacity: 100,
-    width: "2",
-    height: "2",
+    opacity: 20,
+    width: "32",
+    height: "32",
   },
 };
 
@@ -109,13 +109,16 @@ const effects = {
 const meta = {
   home: {
     path: "/",
-    title: "Once UI for Next.js",
+    title: "Ui2v - 本地 AI 动画设计工具 | 免费",
     description:
-      "An open-source design system and component library for Next.js that emphasizes easy styling and accessibility in UI development.",
-    image: "/images/og/home.jpg",
-    canonical: "https://once-ui.com",
+      "Ui2v 是一款免费、本地运行的 AI 动画设计工具。支持多层动画系统、AI智能助手、多渲染引擎，保护隐私。",
+    image: "/images/ui2v-og.jpg",
+    canonical: "https://new.ui2v.com",
     robots: "index,follow",
-    alternates: [{ href: "https://once-ui.com", hrefLang: "en" }],
+    alternates: [
+      { href: "https://new.ui2v.com", hrefLang: "zh" },
+      { href: "https://new.ui2v.com/en", hrefLang: "en" }
+    ],
   },
   // add more routes and reference them in page.tsx
 };
@@ -123,17 +126,16 @@ const meta = {
 // default schema data
 const schema = {
   logo: "",
-  type: "Organization",
-  name: "Once UI",
+  type: "SoftwareApplication",
+  name: "Ui2v",
   description: meta.home.description,
-  email: "lorant@once-ui.com",
+  email: "contact@ui2v.com",
 };
 
 // social links
 const social = {
-  twitter: "https://www.twitter.com/_onceui",
-  linkedin: "https://www.linkedin.com/company/once-ui/",
-  discord: "https://discord.com/invite/5EyAQ4eNdS",
+  website: "https://new.ui2v.com",
+  download: "https://new.ui2v.com/download",
 };
 
 export { baseURL, fonts, style, meta, schema, social, effects, dataStyle };
