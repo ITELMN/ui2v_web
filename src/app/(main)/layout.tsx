@@ -49,6 +49,12 @@ export default function RootLayout({
         path={meta.home.path}
       />
       <head>
+        {/* Umami Analytics */}
+        <script
+          defer
+          src="https://data.illli.cc/script.js"
+          data-website-id="001af9f0-4b15-499b-ac70-a3eb09cbeafa"
+        />
         <script
           id="theme-init"
           dangerouslySetInnerHTML={{

@@ -9,6 +9,7 @@ import {
 import { useLanguage } from "@/contexts/LanguageContext";
 import { iconLibrary } from "@/resources/icons";
 import Image from "next/image";
+import HeroVersionBadge from "@/components/HeroVersionBadge";
 
 export default function Home() {
   const { t } = useLanguage();
@@ -39,7 +40,12 @@ export default function Home() {
 
             {/* CTA 按钮 */}
             <div className="hero-actions">
-              <a href="https://new.ui2v.com/download" className="btn-primary">
+              <a 
+                href="https://new.ui2v.com/download" 
+                className="btn-primary"
+                data-umami-event="download-click"
+                data-umami-event-position="hero"
+              >
                 <span className="btn-icon">⬇</span>
               {t("hero.download")}
             </a>
@@ -67,6 +73,9 @@ export default function Home() {
               <div className="tag">{t("hero.privacy")}</div>
               <div className="tag">{t("hero.ai")}</div>
             </div>
+
+            {/* 版本信息徽章 */}
+            <HeroVersionBadge />
           </div>
 
           {/* 右侧预览图 */}
@@ -239,7 +248,12 @@ export default function Home() {
             {t("cta.title")}
         </Heading>
 
-            <a href="https://new.ui2v.com/download" className="cta-download-btn">
+            <a 
+              href="https://new.ui2v.com/download" 
+              className="cta-download-btn"
+              data-umami-event="download-click"
+              data-umami-event-position="cta"
+            >
               <span className="download-icon">⬇</span>
               <div className="download-text">
                 <span className="download-label">{t("cta.download")}</span>
