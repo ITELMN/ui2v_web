@@ -12,6 +12,7 @@
 html {
   scroll-behavior: smooth;
   overflow-x: hidden;
+  width: 100%;
 }
 
 /* 防止字体加载导致的布局闪烁 */
@@ -36,20 +37,27 @@ body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
-  background: var(--ui2v-bg);
+  background-color: #0a0d14;
   color: #fff;
-  /* 开启硬件加速 */
-  transform: translateZ(0);
+  /* 移除 transform 避免影响 fixed 定位 */
   backface-visibility: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* 确保 fixed 定位相对于视口 */
+  width: 100%;
+  min-height: 100vh;
 }
 
 /* 增强文本可读性 */
-p, span, div {
+p, span, div:not(nav):not(nav *) {
   text-rendering: optimizeSpeed;
   /* 减少重绘 */
   contain: layout style paint;
+}
+
+/* 确保导航栏固定定位正常工作 */
+nav {
+  contain: none !important;
 }
 
 /* 自定义滚动条 */
@@ -207,7 +215,6 @@ button {
 /* 暗色主题优化 */
 @media (prefers-color-scheme: dark) {
   body {
-    background: var(--ui2v-bg);
     color: #fff;
   }
 }

@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import styles from "./HeroVersionBadge.module.css";
+import { HiSparkles } from "react-icons/hi";
 
 interface VersionData {
   name: string;
@@ -66,7 +67,7 @@ export default function HeroVersionBadge() {
           </div>
           <div className={styles.notesSection}>
             <div className={styles.notesIcon}>
-              <span className={styles.sparkle}>✨</span>
+              <span className={styles.sparkle}><HiSparkles /></span>
             </div>
             <div className={`${styles.skeletonText} ${styles.skeleton}`}></div>
           </div>
@@ -106,7 +107,7 @@ export default function HeroVersionBadge() {
         {/* 中间：公告信息 */}
         <div className={styles.notesSection}>
           <div className={styles.notesIcon}>
-            <span className={styles.sparkle}>✨</span>
+            <span className={styles.sparkle}><HiSparkles /></span>
           </div>
           <p className={styles.notesText}>{versionData.notes}</p>
         </div>

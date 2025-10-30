@@ -9,6 +9,7 @@ import { Meta, Schema,  Column, Flex, opacity, SpacingToken, Background} from "@
 import { Providers } from '@/components/Providers';
 import { Navbar } from '@/components/Navbar';
 import { DynamicTitle } from '@/components/DynamicTitle';
+import { CursorGlow } from '@/components/CursorGlow';
 
 export async function generateMetadata() {
   return Meta.generate({
@@ -121,11 +122,12 @@ export default function RootLayout({
         <link rel="preload" href="/logo.svg" as="image" type="image/svg+xml" />
         <link rel="preload" href="/images/preview1.png" as="image" />
       </head>
-      <Providers>
-        <DynamicTitle />
-        <Column as="body" background="page" fillWidth margin="0" padding="0">
+      <body suppressHydrationWarning style={{ margin: 0, padding: 0, position: 'relative', minHeight: '100vh', display: 'flex', flexDirection: 'column', width: '100%' }}>
+        <Providers>
+          <DynamicTitle />
+          <CursorGlow />
           <Background
-            position="absolute"
+            position="fixed"
             mask={{
               x: effects.mask.x,
               y: effects.mask.y,
@@ -166,9 +168,11 @@ export default function RootLayout({
             }}
           />
           <Navbar />
-          {children}
-        </Column>
-      </Providers>
+          <Column fillWidth style={{ position: 'relative', zIndex: 1, background: 'transparent' }}>
+            {children}
+          </Column>
+        </Providers>
+      </body>
     </Flex>
   );
 }

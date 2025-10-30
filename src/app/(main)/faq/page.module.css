@@ -1,0 +1,371 @@
+.faqContainer {
+  width: 100%;
+  min-height: 100vh;
+  background: transparent;
+  padding: 120px 24px 80px;
+  position: relative;
+}
+
+.faqBackNav {
+  max-width: 1200px;
+  margin: 0 auto 32px;
+}
+
+.backButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  border-radius: 10px;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.backButton:hover {
+  background: rgba(139, 92, 246, 0.15);
+  border-color: rgba(139, 92, 246, 0.4);
+  color: #fff;
+  transform: translateX(-4px);
+}
+
+.backButton svg {
+  transition: transform 0.3s ease;
+}
+
+.backButton:hover svg {
+  transform: translateX(-2px);
+}
+
+.faqHeader {
+  max-width: 1200px;
+  margin: 0 auto 80px;
+  text-align: center;
+}
+
+.faqMainTitle {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 800;
+  background: linear-gradient(135deg, #fff 0%, #a78bfa 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0 0 16px 0;
+}
+
+.faqSubtitle {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.65);
+  margin: 0;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.faqContent {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.faqCategory {
+  margin-bottom: 64px;
+}
+
+.categoryHeader {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 2px solid rgba(139, 92, 246, 0.2);
+}
+
+.categoryIcon {
+  font-size: 28px;
+  line-height: 1;
+}
+
+.categoryTitle {
+  font-size: 24px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0;
+}
+
+.faqList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.faqItem {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.faqItem:hover {
+  border-color: rgba(139, 92, 246, 0.4);
+  box-shadow: 0 4px 20px rgba(139, 92, 246, 0.1);
+}
+
+.faqQuestionWrapper {
+  width: 100%;
+  padding: 28px 32px;
+  transition: background 0.2s ease;
+  position: relative;
+}
+
+.faqQuestionWrapper:hover {
+  background: rgba(139, 92, 246, 0.05);
+}
+
+.faqQuestionContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+}
+
+.faqIconButton {
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.faqIconButton:active {
+  transform: scale(0.95);
+}
+
+.faqQuestionText {
+  flex: 1;
+  font-size: 18px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.95);
+  line-height: 1.5;
+  user-select: text;
+  -webkit-user-select: text;
+}
+
+.faqIcon {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(139, 92, 246, 0.15);
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  color: #a78bfa;
+}
+
+.faqIcon.open {
+  background: rgba(139, 92, 246, 0.25);
+}
+
+.faqIcon svg {
+  transition: all 0.3s ease;
+}
+
+.verticalLine {
+  transition: opacity 0.3s ease;
+}
+
+.verticalLine.hidden {
+  opacity: 0;
+}
+
+.faqAnswer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease-in-out, opacity 0.3s ease;
+  opacity: 0;
+}
+
+.faqAnswer.open {
+  max-height: 2000px;
+  opacity: 1;
+}
+
+.faqAnswerContent {
+  padding: 0 32px 32px;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 15px;
+  line-height: 1.8;
+  user-select: text;
+  -webkit-user-select: text;
+}
+
+.faqAnswerContent :global(p) {
+  margin: 0;
+  user-select: text;
+  -webkit-user-select: text;
+}
+
+.faqContact {
+  margin-top: 80px;
+  padding-top: 80px;
+  padding-bottom: 8px;
+  border-top: 1px solid rgba(139, 92, 246, 0.2);
+}
+
+.contactCard {
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, rgba(109, 40, 217, 0.05) 100%);
+  border: 1px solid rgba(139, 92, 246, 0.3);
+  border-radius: 24px;
+  padding: 48px 32px;
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.contactCard:hover {
+  border-color: rgba(139, 92, 246, 0.5);
+  box-shadow: 0 8px 32px rgba(139, 92, 246, 0.15);
+  transform: translateY(-4px);
+  z-index: 2;
+}
+
+.contactIcon {
+  font-size: 48px;
+  margin-bottom: 24px;
+  display: inline-block;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.contactTitle {
+  font-size: 28px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.95);
+  margin: 0 0 12px 0;
+}
+
+.contactDesc {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.65);
+  line-height: 1.6;
+  margin: 0 0 32px 0;
+}
+
+.contactButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 32px;
+  background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 12px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 16px rgba(139, 92, 246, 0.4);
+  position: relative;
+  z-index: 1;
+}
+
+.contactButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(139, 92, 246, 0.6);
+  z-index: 2;
+}
+
+@media (max-width: 768px) {
+  .faqContainer {
+    padding: 100px 16px 60px;
+  }
+
+  .faqHeader {
+    margin-bottom: 60px;
+  }
+
+  .faqSubtitle {
+    font-size: 16px;
+  }
+
+  .faqCategory {
+    margin-bottom: 48px;
+  }
+
+  .categoryHeader {
+    margin-bottom: 20px;
+  }
+
+  .categoryIcon {
+    font-size: 24px;
+  }
+
+  .categoryTitle {
+    font-size: 20px;
+  }
+
+  .faqQuestionWrapper {
+    padding: 24px 20px;
+  }
+
+  .faqQuestionContent {
+    gap: 16px;
+  }
+
+  .faqQuestionText {
+    font-size: 16px;
+  }
+
+  .faqAnswerContent {
+    padding: 0 20px 24px;
+    font-size: 14px;
+  }
+
+  .faqIcon {
+    width: 36px;
+    height: 36px;
+  }
+
+  .faqContact {
+    margin-top: 60px;
+    padding-top: 60px;
+  }
+
+  .contactCard {
+    padding: 40px 24px;
+  }
+
+  .contactIcon {
+    font-size: 40px;
+    margin-bottom: 20px;
+  }
+
+  .contactTitle {
+    font-size: 24px;
+  }
+
+  .contactDesc {
+    font-size: 15px;
+  }
+
+  .contactButton {
+    width: 100%;
+    justify-content: center;
+  }
+}
+

@@ -171,7 +171,7 @@ export default function VersionInfo() {
 
       <style jsx>{`
         .version-info-container {
-          padding: 80px 24px;
+          padding: 80px 24px 88px;
           max-width: 1200px;
           margin: 0 auto;
           position: relative;
@@ -190,12 +190,14 @@ export default function VersionInfo() {
           overflow: hidden;
           backdrop-filter: blur(20px);
           transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+          z-index: 1;
         }
 
         .version-card:hover {
           transform: translateY(-4px);
           border-color: rgba(139, 92, 246, 0.4);
           box-shadow: 0 20px 60px rgba(139, 92, 246, 0.2);
+          z-index: 2;
         }
 
         .version-bg-decoration {

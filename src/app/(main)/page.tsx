@@ -11,6 +11,21 @@ import { iconLibrary } from "@/resources/icons";
 import Image from "next/image";
 import HeroVersionBadge from "@/components/HeroVersionBadge";
 import styles from "./page.module.css";
+import { 
+  FaDownload, 
+  FaRobot, 
+  FaHome, 
+  FaBolt, 
+  FaChartBar, 
+  FaClock, 
+  FaSave, 
+  FaPalette, 
+  FaPlug, 
+  FaVideo, 
+  FaChartLine, 
+  FaBook 
+} from "react-icons/fa";
+import { HiSparkles } from "react-icons/hi";
 
 export default function Home() {
   const { t } = useLanguage();
@@ -47,7 +62,7 @@ export default function Home() {
                 data-umami-event="download-click"
                 data-umami-event-position="hero"
               >
-                <span className={styles.btnIcon}>⬇</span>
+                <span className={styles.btnIcon}><FaDownload /></span>
               {t("hero.download")}
             </a>
             </div>
@@ -112,7 +127,7 @@ export default function Home() {
         <div className={styles.featuresGrid}>
           <div className={styles.featureCard}>
             <div className={`${styles.featureIcon} ${styles.aiIcon}`}>
-              🤖
+              <FaRobot />
         </div>
             <Heading className={styles.featureTitle}>
               {t("features.ai.title")}
@@ -124,7 +139,7 @@ export default function Home() {
 
           <div className={styles.featureCard}>
             <div className={`${styles.featureIcon} ${styles.localIcon}`}>
-              🏠
+              <FaHome />
             </div>
             <Heading className={styles.featureTitle}>
               {t("features.local.title")}
@@ -136,7 +151,7 @@ export default function Home() {
 
           <div className={styles.featureCard}>
             <div className={`${styles.featureIcon} ${styles.easyIcon}`}>
-              ⚡
+              <FaBolt />
           </div>
             <Heading className={styles.featureTitle}>
               {t("features.easy.title")}
@@ -161,7 +176,7 @@ export default function Home() {
 
         <div className={styles.capabilitiesGrid}>
           <div className={styles.capabilityItem}>
-            <div className={styles.capabilityIcon}>📊</div>
+            <div className={styles.capabilityIcon}><FaChartBar /></div>
             <div className={styles.capabilityText}>
               <strong>{t("capabilities.layers")}</strong>
               <span>{t("capabilities.layers.desc")}</span>
@@ -169,7 +184,7 @@ export default function Home() {
           </div>
 
           <div className={styles.capabilityItem}>
-            <div className={styles.capabilityIcon}>⏱️</div>
+            <div className={styles.capabilityIcon}><FaClock /></div>
             <div className={styles.capabilityText}>
               <strong>{t("capabilities.timeline")}</strong>
               <span>{t("capabilities.timeline.desc")}</span>
@@ -177,7 +192,7 @@ export default function Home() {
             </div>
 
           <div className={styles.capabilityItem}>
-            <div className={styles.capabilityIcon}>✨</div>
+            <div className={styles.capabilityIcon}><HiSparkles /></div>
             <div className={styles.capabilityText}>
               <strong>{t("capabilities.ai")}</strong>
               <span>{t("capabilities.ai.desc")}</span>
@@ -185,7 +200,7 @@ export default function Home() {
           </div>
 
           <div className={styles.capabilityItem}>
-            <div className={styles.capabilityIcon}>💾</div>
+            <div className={styles.capabilityIcon}><FaSave /></div>
             <div className={styles.capabilityText}>
               <strong>{t("capabilities.export")}</strong>
               <span>{t("capabilities.export.desc")}</span>
@@ -193,7 +208,7 @@ export default function Home() {
           </div>
 
           <div className={styles.capabilityItem}>
-            <div className={styles.capabilityIcon}>🎨</div>
+            <div className={styles.capabilityIcon}><FaPalette /></div>
             <div className={styles.capabilityText}>
               <strong>{t("capabilities.engines")}</strong>
               <span>{t("capabilities.engines.desc")}</span>
@@ -201,7 +216,7 @@ export default function Home() {
               </div>
 
           <div className={styles.capabilityItem}>
-            <div className={styles.capabilityIcon}>🔌</div>
+            <div className={styles.capabilityIcon}><FaPlug /></div>
             <div className={styles.capabilityText}>
               <strong>{t("capabilities.providers")}</strong>
               <span>{t("capabilities.providers.desc")}</span>
@@ -218,25 +233,25 @@ export default function Home() {
 
         <div className={styles.usecasesGrid}>
           <div className={styles.usecaseCard}>
-            <div className={styles.usecaseIcon}>🎬</div>
+            <div className={styles.usecaseIcon}><FaVideo /></div>
             <strong>{t("usecases.creator")}</strong>
             <span>{t("usecases.creator.desc")}</span>
         </div>
 
           <div className={styles.usecaseCard}>
-            <div className={styles.usecaseIcon}>🎨</div>
+            <div className={styles.usecaseIcon}><FaPalette /></div>
             <strong>{t("usecases.designer")}</strong>
             <span>{t("usecases.designer.desc")}</span>
         </div>
 
           <div className={styles.usecaseCard}>
-            <div className={styles.usecaseIcon}>📈</div>
+            <div className={styles.usecaseIcon}><FaChartLine /></div>
             <strong>{t("usecases.marketer")}</strong>
             <span>{t("usecases.marketer.desc")}</span>
           </div>
 
           <div className={styles.usecaseCard}>
-            <div className={styles.usecaseIcon}>📚</div>
+            <div className={styles.usecaseIcon}><FaBook /></div>
             <strong>{t("usecases.educator")}</strong>
             <span>{t("usecases.educator.desc")}</span>
           </div>
@@ -257,7 +272,7 @@ export default function Home() {
               data-umami-event="download-click"
               data-umami-event-position="cta"
             >
-              <span className={styles.downloadIcon}>⬇</span>
+              <span className={styles.downloadIcon}><FaDownload /></span>
               <div className={styles.downloadText}>
                 <span className={styles.downloadLabel}>{t("cta.download")}</span>
                 <span className={styles.downloadSize}>{t("cta.size")}</span>
@@ -280,19 +295,19 @@ export default function Home() {
 
           <div className={styles.ctaFeatures}>
             <div className={styles.ctaFeatureItem}>
-              <div className={styles.ctaFeatureIcon}>🏠</div>
+              <div className={styles.ctaFeatureIcon}><FaHome /></div>
               <span>{t("cta.features.local")}</span>
             </div>
             <div className={styles.ctaFeatureItem}>
-              <div className={styles.ctaFeatureIcon}>⚡</div>
+              <div className={styles.ctaFeatureIcon}><FaBolt /></div>
               <span>{t("cta.features.fast")}</span>
             </div>
             <div className={styles.ctaFeatureItem}>
-              <div className={styles.ctaFeatureIcon}>🤖</div>
+              <div className={styles.ctaFeatureIcon}><FaRobot /></div>
               <span>{t("cta.features.ai")}</span>
             </div>
             <div className={styles.ctaFeatureItem}>
-              <div className={styles.ctaFeatureIcon}>✨</div>
+              <div className={styles.ctaFeatureIcon}><HiSparkles /></div>
               <span>{t("cta.features.easy")}</span>
             </div>
           </div>

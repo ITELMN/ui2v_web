@@ -26,7 +26,8 @@ export function Navbar() {
           top: 0,
           left: 0,
           right: 0,
-          zIndex: 1000,
+          width: "100%",
+          zIndex: 9999,
           backdropFilter: isScrolled ? "blur(20px)" : "blur(10px)",
           background: isScrolled 
             ? "rgba(10, 13, 20, 0.9)" 
@@ -35,6 +36,7 @@ export function Navbar() {
             ? "1px solid rgba(139, 92, 246, 0.2)" 
             : "1px solid transparent",
           transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+          contain: "none",
         }}
       >
         <div
@@ -147,14 +149,18 @@ export function Navbar() {
                 textDecoration: "none",
                 transition: "all 0.3s ease",
                 boxShadow: "0 4px 16px rgba(139, 92, 246, 0.4)",
+                position: "relative",
+                zIndex: 1,
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.transform = "translateY(-2px)";
                 e.currentTarget.style.boxShadow = "0 6px 20px rgba(139, 92, 246, 0.6)";
+                e.currentTarget.style.zIndex = "100";
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.transform = "translateY(0)";
                 e.currentTarget.style.boxShadow = "0 4px 16px rgba(139, 92, 246, 0.4)";
+                e.currentTarget.style.zIndex = "1";
               }}
             >
               {language === "zh" ? "立即下载" : "Download"}
@@ -168,7 +174,17 @@ export function Navbar() {
       {/* Spacer */}
       <div style={{ height: "60px" }} />
 
-      <style jsx>{`
+      <style jsx global>{`
+        nav {
+          position: fixed !important;
+          top: 0 !important;
+          left: 0 !important;
+          right: 0 !important;
+          width: 100% !important;
+          z-index: 9999 !important;
+          transform: none !important;
+        }
+        
         @media (max-width: 640px) {
           nav > div {
             padding: 12px 16px !important;
