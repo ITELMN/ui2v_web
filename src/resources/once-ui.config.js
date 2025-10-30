@@ -9,24 +9,36 @@ const heading = Geist({
   variable: "--font-heading",
   subsets: ["latin"],
   display: "swap",
+  preload: true,
+  fallback: ['system-ui', '-apple-system', 'sans-serif'],
+  adjustFontFallback: true,
 });
 
 const body = Geist({
   variable: "--font-body",
   subsets: ["latin"],
   display: "swap",
+  preload: true,
+  fallback: ['system-ui', '-apple-system', 'sans-serif'],
+  adjustFontFallback: true,
 });
 
 const label = Geist({
   variable: "--font-label",
   subsets: ["latin"],
   display: "swap",
+  preload: true,
+  fallback: ['system-ui', '-apple-system', 'sans-serif'],
+  adjustFontFallback: true,
 });
 
 const code = Geist_Mono({
   variable: "--font-code",
   subsets: ["latin"],
   display: "swap",
+  preload: true,
+  fallback: ['Consolas', 'Monaco', 'monospace'],
+  adjustFontFallback: true,
 });
 
 const fonts = {

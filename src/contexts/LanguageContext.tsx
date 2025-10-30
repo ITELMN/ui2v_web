@@ -84,6 +84,45 @@ const translations = {
     "footer.windows": "Windows 10/11 (公测中)",
     "footer.mac": "macOS (即将推出)",
     "footer.copyright": "© 2025 Ui2v. 保留所有权利",
+
+    // FAQ
+    "faq.title": "常见问题",
+    "faq.subtitle": "快速找到您需要的答案，了解 Ui2v 的强大功能",
+    "faq.back": "返回首页",
+    "faq.category.general": "基础信息",
+    "faq.category.usage": "使用指南",
+    "faq.category.technical": "技术细节",
+    
+    "faq.q1": "什么是 Ui2v？",
+    "faq.a1": "Ui2v 是一款完全本地运行的 AI 动画设计工具。它让任何人都能用自然语言描述创意想法，AI 就能自动生成专业的动画视频。无需学习复杂的软件，3分钟即可上手创作。所有处理都在您的电脑本地完成，保护数据隐私，响应速度快，离线也能使用。",
+    
+    "faq.q2": "Ui2v 是免费的吗？",
+    "faq.a2": "Ui2v 目前处于公测阶段，完全免费使用。公测期间您可以体验所有核心功能，包括多图层编辑、时间轴控制、多种渲染引擎等。如果使用 AI 功能，需要您自己的 AI API Key。未来正式版的定价策略会根据用户反馈制定。",
+    
+    "faq.q3": "支持哪些平台？",
+    "faq.a3": "目前 Ui2v 公测版支持 Windows 10 和 Windows 11 系统。macOS 版本正在开发中，将在正式版发布时同步推出。我们致力于让更多平台的用户都能体验到 AI 动画创作的便利。",
+    
+    "faq.q4": "如何开始使用 Ui2v？",
+    "faq.a4": "非常简单！首先从官网下载 Windows 安装包，安装后打开软件。您可以从空白项目开始，手动添加图层和动画；也可以点击 AI 助手，用自然语言描述您的想法（如'制作一个标题从左滑入的动画'），AI 会自动帮您生成。软件内置了详细的教程和示例项目，帮助您快速上手。",
+    
+    "faq.q5": "可以导出哪些格式的视频？",
+    "faq.a5": "Ui2v 支持导出 MP4 和 WebM 两种主流视频格式。您可以自定义分辨率（从 480p 到 4K）、帧率（24fps-60fps）和视频质量。导出过程完全在本地完成，保证您的作品安全性。还支持导出透明背景的 WebM 视频，方便后期合成。",
+    
+    "faq.q6": "AI 功能需要什么配置？",
+    "faq.a6": "AI 功能需要联网并配置 API Key。我们支持 15+ 个 AI 平台：OpenAI (GPT-4、GPT-3.5)、Anthropic (Claude)、Google (Gemini)、以及各种本地模型 (Ollama、LM Studio 等)。您可以根据预算和需求选择合适的平台。如果配置本地模型，可实现完全离线的 AI 动画创作。",
+    
+    "faq.q7": "需要什么样的电脑配置？",
+    "faq.a7": "Ui2v 对配置要求不高。最低要求：Windows 10/11 系统，4GB 内存，支持 OpenGL 3.0 的显卡。推荐配置：8GB 或更多内存，独立显卡，可以获得更流畅的编辑和预览体验。软件安装包约 150MB，非常轻量。",
+    
+    "faq.q8": "支持哪些渲染引擎？",
+    "faq.a8": "Ui2v 内置多种专业渲染引擎：Three.js (3D图形)、Konva (2D canvas)、Lottie (矢量动画)、ECharts (数据可视化)、Fabric.js (图形编辑) 等。不同的引擎适合不同的应用场景，您可以根据项目需求自由切换，充分发挥每个引擎的优势。",
+    
+    "faq.q9": "数据安全吗？",
+    "faq.a9": "绝对安全！Ui2v 的核心功能完全在本地运行，您的项目文件、素材、创意都存储在本地电脑，我们无法访问。只有在使用 AI 功能时，才会将您的文本提示发送给 AI 服务商（如 OpenAI），但项目文件本身不会上传。您可以选择使用本地 AI 模型实现100%离线工作。",
+    
+    "faq.contact.title": "还有其他问题？",
+    "faq.contact.desc": "如果您没有找到想要的答案，欢迎下载体验 Ui2v 或访问我们的官方文档",
+    "faq.contact.button": "立即下载体验",
   },
   en: {
     // Site Meta
@@ -155,32 +194,80 @@ const translations = {
     "footer.windows": "Windows 10/11 (Beta)",
     "footer.mac": "macOS (Coming Soon)",
     "footer.copyright": "© 2025 Ui2v. All rights reserved.",
+
+    // FAQ
+    "faq.title": "Frequently Asked Questions",
+    "faq.subtitle": "Find answers quickly and discover Ui2v's powerful features",
+    "faq.back": "Back to Home",
+    "faq.category.general": "General",
+    "faq.category.usage": "Usage Guide",
+    "faq.category.technical": "Technical Details",
+    
+    "faq.q1": "What is Ui2v?",
+    "faq.a1": "Ui2v is a fully local AI animation design tool that empowers anyone to create professional animations. Simply describe your creative ideas in natural language, and AI automatically generates stunning animation videos. No need to learn complex software - get started in just 3 minutes. All processing happens locally on your computer, protecting your data privacy, ensuring fast response times, and enabling offline use.",
+    
+    "faq.q2": "Is Ui2v free?",
+    "faq.a2": "Ui2v is currently in public beta and completely free to use. During the beta period, you can experience all core features including multi-layer editing, timeline control, and multiple rendering engines. If using AI features, you'll need your own AI API Key. Official release pricing will be determined based on user feedback.",
+    
+    "faq.q3": "What platforms are supported?",
+    "faq.a3": "Currently, Ui2v beta supports Windows 10 and Windows 11 systems. The macOS version is under development and will be released alongside the official launch. We're committed to bringing AI animation creation to users across all platforms.",
+    
+    "faq.q4": "How do I get started with Ui2v?",
+    "faq.a4": "It's simple! First, download the Windows installer from our website and install it. You can start from a blank project and manually add layers and animations, or click the AI assistant and describe your idea in natural language (like 'create a title sliding in from left'), and AI will generate it for you. The software includes detailed tutorials and sample projects to help you get started quickly.",
+    
+    "faq.q5": "What video formats can I export?",
+    "faq.a5": "Ui2v supports exporting to MP4 and WebM formats. You can customize resolution (480p to 4K), frame rate (24fps-60fps), and video quality. The entire export process happens locally, ensuring your work's security. We also support transparent WebM export for easy compositing in post-production.",
+    
+    "faq.q6": "What's needed for AI features?",
+    "faq.a6": "AI features require internet and an API Key. We support 15+ AI platforms: OpenAI (GPT-4, GPT-3.5), Anthropic (Claude), Google (Gemini), and various local models (Ollama, LM Studio, etc.). You can choose the platform that fits your budget and needs. With local models, you can achieve completely offline AI animation creation.",
+    
+    "faq.q7": "What are the system requirements?",
+    "faq.a7": "Ui2v has modest requirements. Minimum: Windows 10/11, 4GB RAM, OpenGL 3.0 compatible graphics. Recommended: 8GB+ RAM and dedicated graphics card for smoother editing and preview. The installer is only ~150MB - very lightweight.",
+    
+    "faq.q8": "What rendering engines are supported?",
+    "faq.a8": "Ui2v includes multiple professional rendering engines: Three.js (3D graphics), Konva (2D canvas), Lottie (vector animation), ECharts (data visualization), Fabric.js (graphic editing), and more. Different engines suit different scenarios - you can freely switch based on your project needs to leverage each engine's strengths.",
+    
+    "faq.q9": "Is my data secure?",
+    "faq.a9": "Absolutely! Ui2v's core features run entirely locally - your project files, assets, and creative work are stored on your computer where we can't access them. Only when using AI features will your text prompts be sent to AI providers (like OpenAI), but project files themselves are never uploaded. You can use local AI models for 100% offline work.",
+    
+    "faq.contact.title": "Still have questions?",
+    "faq.contact.desc": "If you haven't found the answer you're looking for, download Ui2v or visit our official documentation",
+    "faq.contact.button": "Download Now",
   },
 };
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [language, setLanguageState] = useState<Language>("zh");
-
-  useEffect(() => {
-    // Load language from localStorage
+  // Initialize with a function to avoid hydration mismatch
+  const [language, setLanguageState] = useState<Language>(() => {
+    // During SSR, use a default value
+    if (typeof window === "undefined") {
+      return "zh"; // Default server-side language
+    }
+    
+    // Client-side initialization
     const savedLang = localStorage.getItem("ui2v-language") as Language;
     if (savedLang && (savedLang === "zh" || savedLang === "en")) {
-      setLanguageState(savedLang);
-    } else {
-      // Auto-detect browser/system language
-      const browserLang = navigator.language.toLowerCase();
-      
-      // Check if language contains 'zh' (Chinese)
-      if (browserLang.includes("zh")) {
-        setLanguageState("zh");
-        localStorage.setItem("ui2v-language", "zh");
-      } else {
-        // Default to English for all other languages
-        setLanguageState("en");
-        localStorage.setItem("ui2v-language", "en");
-      }
+      return savedLang;
     }
-  }, []);
+    
+    // Auto-detect browser/system language
+    const browserLang = navigator.language.toLowerCase();
+    const detectedLang = browserLang.includes("zh") ? "zh" : "en";
+    localStorage.setItem("ui2v-language", detectedLang);
+    return detectedLang;
+  });
+  
+  const [isHydrated, setIsHydrated] = useState(false);
+
+  useEffect(() => {
+    setIsHydrated(true);
+    
+    // Double-check language preference after hydration
+    const savedLang = localStorage.getItem("ui2v-language") as Language;
+    if (savedLang && (savedLang === "zh" || savedLang === "en") && savedLang !== language) {
+      setLanguageState(savedLang);
+    }
+  }, [language]);
 
   const setLanguage = (lang: Language) => {
     setLanguageState(lang);

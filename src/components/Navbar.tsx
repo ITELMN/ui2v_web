@@ -108,6 +108,34 @@ export function Navbar() {
             }}
           >
             <a
+              href="/faq"
+              style={{
+                padding: "10px 20px",
+                fontSize: "15px",
+                fontWeight: 600,
+                color: "rgba(255, 255, 255, 0.85)",
+                background: "rgba(255, 255, 255, 0.05)",
+                border: "1px solid rgba(139, 92, 246, 0.2)",
+                borderRadius: "10px",
+                textDecoration: "none",
+                transition: "all 0.3s ease",
+                backdropFilter: "blur(10px)",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = "rgba(139, 92, 246, 0.15)";
+                e.currentTarget.style.borderColor = "rgba(139, 92, 246, 0.4)";
+                e.currentTarget.style.color = "#fff";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = "rgba(255, 255, 255, 0.05)";
+                e.currentTarget.style.borderColor = "rgba(139, 92, 246, 0.2)";
+                e.currentTarget.style.color = "rgba(255, 255, 255, 0.85)";
+              }}
+            >
+              FAQ
+            </a>
+
+            <a
               href="https://new.ui2v.com/download"
               style={{
                 padding: "10px 28px",

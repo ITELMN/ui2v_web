@@ -113,6 +113,13 @@ export default function RootLayout({
             `,
           }}
         />
+        {/* Preconnect to external domains */}
+        <link rel="preconnect" href="https://data.illli.cc" />
+        <link rel="dns-prefetch" href="https://data.illli.cc" />
+        
+        {/* Preload critical resources */}
+        <link rel="preload" href="/logo.svg" as="image" type="image/svg+xml" />
+        <link rel="preload" href="/images/preview1.png" as="image" />
       </head>
       <Providers>
         <DynamicTitle />

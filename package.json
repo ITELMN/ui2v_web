@@ -1,6 +1,6 @@
 {
   "name": "ui2v-website",
-  "version": "1.0.0",
+  "version": "1.0.5",
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack -p 8080",
