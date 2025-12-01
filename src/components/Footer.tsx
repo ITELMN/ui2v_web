@@ -3,14 +3,17 @@
 import { useLanguage } from "@/contexts/LanguageContext";
 import styles from "./Footer.module.css";
 import Image from "next/image";
+import { FooterDecorBg } from "./AiVideoDecorations";
+import { FaTwitter, FaDiscord, FaGithub, FaYoutube } from "react-icons/fa";
 
 export function Footer() {
   const { t } = useLanguage();
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className={styles.footer}>
-      <div className={styles.container}>
+    <footer className={styles.footer} style={{ position: 'relative', overflow: 'hidden' }}>
+      <FooterDecorBg />
+      <div className={styles.container} style={{ position: 'relative', zIndex: 1 }}>
         <div className={styles.leftSection}>
           <div className={styles.brand}>
             <Image
@@ -29,6 +32,13 @@ export function Footer() {
         </div>
 
         <div className={styles.rightSection}>
+          {/* Social Links */}
+          <div style={{ display: 'flex', gap: '16px', marginRight: '24px' }}>
+            <a href="#" style={{ color: 'rgba(255,255,255,0.4)', transition: 'color 0.2s' }} onMouseEnter={e => e.currentTarget.style.color = '#fff'} onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,0.4)'}><FaTwitter size={14} /></a>
+            <a href="#" style={{ color: 'rgba(255,255,255,0.4)', transition: 'color 0.2s' }} onMouseEnter={e => e.currentTarget.style.color = '#5865F2'} onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,0.4)'}><FaDiscord size={14} /></a>
+            <a href="#" style={{ color: 'rgba(255,255,255,0.4)', transition: 'color 0.2s' }} onMouseEnter={e => e.currentTarget.style.color = '#fff'} onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,0.4)'}><FaGithub size={14} /></a>
+          </div>
+
           <div className={styles.platformInfo}>
             <span className={styles.platformLabel}>{t("footer.platform")}</span>
             <div className={styles.badges}>

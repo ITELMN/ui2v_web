@@ -10,6 +10,8 @@ import { Providers } from '@/components/Providers';
 import { Navbar } from '@/components/Navbar';
 import { DynamicTitle } from '@/components/DynamicTitle';
 import { CursorGlow } from '@/components/CursorGlow';
+import { BackgroundDecorations } from '@/components/BackgroundDecorations';
+import { GlobalAmbientBg } from '@/components/AiVideoDecorations';
 
 export async function generateMetadata() {
   return Meta.generate({
@@ -126,6 +128,8 @@ export default function RootLayout({
         <Providers>
           <DynamicTitle />
           <CursorGlow />
+          <BackgroundDecorations />
+          <GlobalAmbientBg />
           <Background
             position="fixed"
             mask={{

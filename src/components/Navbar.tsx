@@ -30,7 +30,7 @@ export function Navbar() {
           zIndex: 9999,
           backdropFilter: isScrolled ? "blur(20px)" : "blur(10px)",
           background: isScrolled 
-            ? "rgba(10, 10, 12, 0.8)" 
+            ? "rgba(255, 255, 255, 0.01)" 
             : "transparent",
           borderBottom: isScrolled 
             ? "1px solid rgba(255, 255, 255, 0.08)" 
@@ -39,6 +39,32 @@ export function Navbar() {
           contain: "none",
         }}
       >
+        {/* Animated Bottom Glow Line */}
+        <div 
+          style={{
+            position: 'absolute',
+            bottom: 0,
+            left: 0,
+            width: '100%',
+            height: '1px',
+            background: 'linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.5), transparent)',
+            opacity: isScrolled ? 1 : 0,
+            transition: 'opacity 0.5s ease',
+            zIndex: 2
+          }}
+        >
+          <div style={{
+            position: 'absolute',
+            top: 0,
+            left: '-50%',
+            width: '50%',
+            height: '100%',
+            background: 'linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent)',
+            animation: 'scanline 3s linear infinite',
+            opacity: 0.5
+          }} />
+        </div>
+
         <div
           style={{
             maxWidth: "1200px",
@@ -188,6 +214,11 @@ export function Navbar() {
           nav > div {
             padding: 12px 16px !important;
           }
+        }
+        
+        @keyframes scanline {
+          0% { left: -50%; }
+          100% { left: 150%; }
         }
       `}</style>
     </>

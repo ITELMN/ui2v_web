@@ -12,6 +12,9 @@ import Image from "next/image";
 import { Footer } from "@/components/Footer";
 import HeroVersionBadge from "@/components/HeroVersionBadge";
 import styles from "./page.module.css";
+import { AiIcon, LocalIcon, EasyIcon, AiCardBg, LocalCardBg, EasyCardBg } from "@/components/FeatureIcons";
+import { SectionConnector, WaveDivider } from "@/components/SectionDividers";
+import { VideoTimelineAnim, AiProcessingNodes, FilmStripBg, WaveformAnim, NeuralNetworkGrid, RenderingAnim, CircuitBoardBg, EnergyFlowBg, ScanningOverlay, LayersAnim, EnginesAnim, ProvidersAnim, DownloadGuideAnim } from "@/components/AiVideoDecorations";
 import { 
   FaDownload, 
   FaRobot, 
@@ -121,15 +124,26 @@ export default function Home() {
 
             {/* 特性标签 */}
             <div className={styles.featureTags}>
-              <div className={styles.tag}>{t("hero.local")}</div>
-              <div className={styles.tag}>{t("hero.privacy")}</div>
-              <div className={styles.tag}>{t("hero.ai")}</div>
+              <div className={styles.tag} style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                <FaHome style={{ fontSize: '0.9em', opacity: 0.8 }} />
+                {t("hero.local")}
+              </div>
+              <div className={styles.tag} style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" style={{ opacity: 0.8 }}>
+                  <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/>
+                </svg>
+                {t("hero.privacy")}
+              </div>
+              <div className={styles.tag} style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                <FaRobot style={{ fontSize: '0.9em', opacity: 0.8 }} />
+                {t("hero.ai")}
+              </div>
             </div>
           </div>
 
           {/* 右侧预览图 */}
           <div className={styles.heroPreview}>
-            <div className={styles.previewCard}>
+            <div className={styles.previewCard} style={{ position: 'relative' }}>
             <Image
               src="/images/preview1.png"
                 alt="Ui2v 界面预览"
@@ -148,11 +162,15 @@ export default function Home() {
             </div>
           </div>
         </div>
+        <WaveDivider />
       </section>
 
       {/* 核心特性 - 精简版 */}
-      <section className={styles.featuresSection}>
-        <div className={styles.sectionHeader}>
+      <section className={styles.featuresSection} style={{ position: 'relative' }}>
+        <div style={{ position: 'absolute', top: '0', right: '0', opacity: 0.6, pointerEvents: 'none', zIndex: 0 }}>
+          <AiProcessingNodes />
+        </div>
+        <div className={styles.sectionHeader} style={{ position: 'relative', zIndex: 1 }}>
           <Heading className={styles.sectionTitle}>
               {t("features.title")}
             </Heading>
@@ -163,8 +181,9 @@ export default function Home() {
 
         <div className={styles.featuresGrid}>
           <div className={`${styles.featureCard} card-hover-effect`}>
+            <AiCardBg />
             <div className={`${styles.featureIcon} ${styles.aiIcon} animate-float`}>
-              <FaRobot />
+              <AiIcon className="w-full h-full" />
         </div>
             <Heading className={`${styles.featureTitle} text-gradient`}>
               {t("features.ai.title")}
@@ -175,8 +194,9 @@ export default function Home() {
           </div>
 
           <div className={`${styles.featureCard} card-hover-effect`}>
+            <LocalCardBg />
             <div className={`${styles.featureIcon} ${styles.localIcon} animate-float`}>
-              <FaHome />
+              <LocalIcon className="w-full h-full" />
             </div>
             <Heading className={`${styles.featureTitle} text-gradient`}>
               {t("features.local.title")}
@@ -187,8 +207,9 @@ export default function Home() {
           </div>
 
           <div className={`${styles.featureCard} card-hover-effect`}>
+            <EasyCardBg />
             <div className={`${styles.featureIcon} ${styles.easyIcon} animate-float`}>
-              <FaBolt />
+              <EasyIcon className="w-full h-full" />
           </div>
             <Heading className={`${styles.featureTitle} text-gradient`}>
               {t("features.easy.title")}
@@ -200,9 +221,12 @@ export default function Home() {
         </div>
       </section>
 
+      <SectionConnector />
+
       {/* 功能亮点 - 网格展示 */}
-      <section className={styles.capabilitiesSection}>
-        <div className={styles.sectionHeader}>
+      <section className={styles.capabilitiesSection} style={{ position: 'relative', overflow: 'hidden' }}>
+        <CircuitBoardBg />
+        <div className={styles.sectionHeader} style={{ position: 'relative', zIndex: 1 }}>
           <Heading className={styles.sectionTitle}>
             {t("capabilities.title")}
             </Heading>
@@ -211,50 +235,68 @@ export default function Home() {
             </Text>
         </div>
 
-        <div className={styles.capabilitiesGrid}>
-          <div className={`${styles.capabilityItem} card-hover-effect`}>
-            <div className={styles.capabilityIcon}><FaChartBar /></div>
-            <div className={styles.capabilityText}>
+        <div className={styles.capabilitiesGrid} style={{ position: 'relative', zIndex: 1 }}>
+          <div className={`${styles.capabilityItem} card-hover-effect`} style={{ position: 'relative', overflow: 'hidden' }}>
+            <div style={{ position: 'absolute', bottom: 0, right: 0, width: '120px', height: '60px', opacity: 0.5, pointerEvents: 'none' }}>
+              <LayersAnim />
+            </div>
+            <div className={styles.capabilityIcon} style={{ position: 'relative', zIndex: 1 }}><FaChartBar /></div>
+            <div className={styles.capabilityText} style={{ position: 'relative', zIndex: 1 }}>
               <strong className="text-gradient-primary">{t("capabilities.layers")}</strong>
               <span>{t("capabilities.layers.desc")}</span>
             </div>
           </div>
 
-          <div className={`${styles.capabilityItem} card-hover-effect`}>
-            <div className={styles.capabilityIcon}><FaClock /></div>
-            <div className={styles.capabilityText}>
+          <div className={`${styles.capabilityItem} card-hover-effect`} style={{ position: 'relative', overflow: 'hidden' }}>
+            <div style={{ position: 'absolute', bottom: 10, right: 10, width: '180px', height: '40px', opacity: 0.8, pointerEvents: 'none' }}>
+              <VideoTimelineAnim />
+            </div>
+            <div className={styles.capabilityIcon} style={{ position: 'relative', zIndex: 1 }}><FaClock /></div>
+            <div className={styles.capabilityText} style={{ position: 'relative', zIndex: 1 }}>
               <strong className="text-gradient-primary">{t("capabilities.timeline")}</strong>
               <span>{t("capabilities.timeline.desc")}</span>
                 </div>
             </div>
 
-          <div className={`${styles.capabilityItem} card-hover-effect`}>
-            <div className={styles.capabilityIcon}><HiSparkles /></div>
-            <div className={styles.capabilityText}>
+          <div className={`${styles.capabilityItem} card-hover-effect`} style={{ position: 'relative', overflow: 'hidden' }}>
+            <div style={{ position: 'absolute', top: 0, right: 0, width: '100%', height: '100%', opacity: 0.3, pointerEvents: 'none' }}>
+              <NeuralNetworkGrid />
+            </div>
+            <div className={styles.capabilityIcon} style={{ position: 'relative', zIndex: 1 }}><HiSparkles /></div>
+            <div className={styles.capabilityText} style={{ position: 'relative', zIndex: 1 }}>
               <strong className="text-gradient-primary">{t("capabilities.ai")}</strong>
               <span>{t("capabilities.ai.desc")}</span>
         </div>
           </div>
 
-          <div className={`${styles.capabilityItem} card-hover-effect`}>
-            <div className={styles.capabilityIcon}><FaSave /></div>
-            <div className={styles.capabilityText}>
+          <div className={`${styles.capabilityItem} card-hover-effect`} style={{ position: 'relative', overflow: 'hidden' }}>
+            <div style={{ position: 'absolute', bottom: '10px', right: '10px', width: '140px', height: '50px', opacity: 0.4, pointerEvents: 'none' }}>
+              <RenderingAnim />
+            </div>
+            <div className={styles.capabilityIcon} style={{ position: 'relative', zIndex: 1 }}><FaSave /></div>
+            <div className={styles.capabilityText} style={{ position: 'relative', zIndex: 1 }}>
               <strong className="text-gradient-primary">{t("capabilities.export")}</strong>
               <span>{t("capabilities.export.desc")}</span>
           </div>
           </div>
 
-          <div className={`${styles.capabilityItem} card-hover-effect`}>
-            <div className={styles.capabilityIcon}><FaPalette /></div>
-            <div className={styles.capabilityText}>
+          <div className={`${styles.capabilityItem} card-hover-effect`} style={{ position: 'relative', overflow: 'hidden' }}>
+            <div style={{ position: 'absolute', bottom: '10px', right: '10px', width: '80px', height: '80px', opacity: 0.4, pointerEvents: 'none' }}>
+              <EnginesAnim />
+            </div>
+            <div className={styles.capabilityIcon} style={{ position: 'relative', zIndex: 1 }}><FaPalette /></div>
+            <div className={styles.capabilityText} style={{ position: 'relative', zIndex: 1 }}>
               <strong className="text-gradient-primary">{t("capabilities.engines")}</strong>
               <span>{t("capabilities.engines.desc")}</span>
                 </div>
               </div>
 
-          <div className={`${styles.capabilityItem} card-hover-effect`}>
-            <div className={styles.capabilityIcon}><FaPlug /></div>
-            <div className={styles.capabilityText}>
+          <div className={`${styles.capabilityItem} card-hover-effect`} style={{ position: 'relative', overflow: 'hidden' }}>
+            <div style={{ position: 'absolute', top: '10px', right: '10px', width: '100px', height: '50px', opacity: 0.4, pointerEvents: 'none' }}>
+              <ProvidersAnim />
+            </div>
+            <div className={styles.capabilityIcon} style={{ position: 'relative', zIndex: 1 }}><FaPlug /></div>
+            <div className={styles.capabilityText} style={{ position: 'relative', zIndex: 1 }}>
               <strong className="text-gradient-primary">{t("capabilities.providers")}</strong>
               <span>{t("capabilities.providers.desc")}</span>
             </div>
@@ -262,13 +304,16 @@ export default function Home() {
         </div>
       </section>
 
+      <SectionConnector />
+
       {/* 适用场景 */}
-      <section className={styles.usecasesSection}>
-        <Heading className={`${styles.sectionTitle} text-gradient`}>
+      <section className={styles.usecasesSection} style={{ position: 'relative', overflow: 'hidden' }}>
+        <FilmStripBg />
+        <Heading className={`${styles.sectionTitle} text-gradient`} style={{ position: 'relative', zIndex: 1 }}>
           {t("usecases.title")}
           </Heading>
 
-        <div className={styles.usecasesGrid}>
+        <div className={styles.usecasesGrid} style={{ position: 'relative', zIndex: 1 }}>
           <div className={`${styles.usecaseCard} card-hover-effect`}>
             <div className={`${styles.usecaseIcon} animate-float`}><FaVideo /></div>
             <strong className="text-gradient-primary">{t("usecases.creator")}</strong>
@@ -297,6 +342,7 @@ export default function Home() {
 
       {/* CTA Section - 全新设计 */}
       <section className={styles.ctaSection}>
+        <EnergyFlowBg />
         <div className={styles.ctaContainer}>
           <div className={styles.ctaMain}>
             <Heading className={`${styles.ctaTitle} text-shimmer`}>
