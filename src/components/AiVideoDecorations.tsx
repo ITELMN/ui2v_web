@@ -287,7 +287,7 @@ export const DownloadGuideAnim = ({ className }: { className?: string }) => {
   );
 };
 
-// 底部装饰背景
+// 底部装饰背景 - UI转视频概念动画
 export const FooterDecorBg = () => {
   const id = React.useId();
   return (
@@ -298,41 +298,114 @@ export const FooterDecorBg = () => {
       width: '100%',
       height: '100%',
       zIndex: -1,
-      opacity: 0.15,
+      opacity: 0.2,
       pointerEvents: 'none',
-      overflow: 'hidden'
+      overflow: 'hidden',
+      maskImage: 'linear-gradient(to bottom, transparent, black 20%)'
     }}>
-      <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+      <svg width="100%" height="100%" viewBox="0 0 1200 300" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
         <defs>
-          <linearGradient id={`footer-grad-${id}`} x1="0%" y1="100%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="var(--ui2v-primary)" stopOpacity="0.1" />
-            <stop offset="50%" stopColor="var(--ui2v-primary)" stopOpacity="0.3" />
+          <linearGradient id={`flow-grad-${id}`} x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor="var(--ui2v-primary)" stopOpacity="0" />
+            <stop offset="50%" stopColor="var(--ui2v-accent)" stopOpacity="0.5" />
             <stop offset="100%" stopColor="var(--ui2v-primary)" stopOpacity="0" />
           </linearGradient>
-          <pattern id={`footer-grid-${id}`} x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
-            <path d="M 40 0 L 0 0 0 40" fill="none" stroke="var(--ui2v-accent)" strokeWidth="0.5" opacity="0.3"/>
-          </pattern>
+
+          <linearGradient id={`flow-grad-vertical-${id}`} x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stopColor="var(--ui2v-accent)" stopOpacity="0" />
+            <stop offset="50%" stopColor="var(--ui2v-accent)" stopOpacity="0.8" />
+            <stop offset="100%" stopColor="var(--ui2v-accent)" stopOpacity="0" />
+          </linearGradient>
+          
+          <filter id={`glow-footer-${id}`}>
+            <feGaussianBlur stdDeviation="2" result="coloredBlur" />
+            <feMerge>
+              <feMergeNode in="coloredBlur" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
         </defs>
-        
-        {/* 背景网格 */}
-        <rect width="100%" height="100%" fill={`url(#footer-grid-${id})`} opacity="0.5" />
-        
-        {/* 底部光晕 */}
-        <path d="M0 100 L100% 100 L100% 50 Q 50% 20 0 50 Z" fill={`url(#footer-grad-${id})`} />
-        
-        {/* 浮动粒子 */}
-        {[...Array(8)].map((_, i) => (
-          <circle key={i} cx={`${10 + i * 12}%`} cy="90%" r={Math.random() * 2 + 1} fill="var(--ui2v-accent)">
-            <animate attributeName="cy" values="90%;40%;90%" dur={`${4 + i}s`} repeatCount="indefinite" />
-            <animate attributeName="opacity" values="0;0.8;0" dur={`${4 + i}s`} repeatCount="indefinite" />
-            <animate attributeName="r" values="1;3;1" dur={`${4 + i}s`} repeatCount="indefinite" />
-          </circle>
-        ))}
-        
-        {/* 连接线 */}
-         <path d="M0 95 Q 25% 85 50% 95 T 100% 95" fill="none" stroke="var(--ui2v-primary)" strokeWidth="1" opacity="0.3">
-            <animate attributeName="d" values="M0 95 Q 25% 85 50% 95 T 100% 95; M0 95 Q 25% 105 50% 95 T 100% 95; M0 95 Q 25% 85 50% 95 T 100% 95" dur="10s" repeatCount="indefinite" />
-         </path>
+
+        {/* 1. 底部透视网格 */}
+        <g transform="perspective(500px) rotateX(60deg) translate(0, 100)">
+             <path d="M0 250 L1200 250 M0 200 L1200 200 M0 150 L1200 150" stroke="var(--ui2v-primary)" strokeWidth="0.5" opacity="0.2" />
+             {[...Array(13)].map((_, i) => (
+                 <line key={i} x1={i * 100} y1="100" x2={i * 100 - 200} y2="400" stroke="var(--ui2v-primary)" strokeWidth="0.5" opacity="0.15" />
+             ))}
+        </g>
+
+        {/* 2. 左侧：静态UI元素 (代表输入) */}
+        <g transform="translate(100, 120)">
+            {/* UI Card 1 */}
+            <rect x="0" y="0" width="80" height="50" rx="4" fill="none" stroke="var(--ui2v-primary)" strokeWidth="1.5" opacity="0.6">
+                <animate attributeName="y" values="0;-5;0" dur="4s" repeatCount="indefinite" />
+            </rect>
+            <rect x="10" y="10" width="40" height="4" rx="2" fill="var(--ui2v-primary)" opacity="0.4">
+                 <animate attributeName="y" values="10;5;10" dur="4s" repeatCount="indefinite" />
+            </rect>
+            <rect x="10" y="20" width="60" height="4" rx="2" fill="var(--ui2v-primary)" opacity="0.4">
+                 <animate attributeName="y" values="20;15;20" dur="4s" repeatCount="indefinite" />
+            </rect>
+
+            {/* UI Card 2 */}
+            <rect x="50" y="40" width="70" height="60" rx="4" fill="var(--ui2v-primary)" fillOpacity="0.1" stroke="var(--ui2v-primary)" strokeWidth="1.5" opacity="0.5">
+                <animate attributeName="y" values="40;45;40" dur="5s" repeatCount="indefinite" />
+            </rect>
+            <circle cx="85" cy="70" r="10" stroke="var(--ui2v-primary)" strokeWidth="1" fill="none" opacity="0.4">
+                <animate attributeName="cy" values="70;75;70" dur="5s" repeatCount="indefinite" />
+            </circle>
+        </g>
+
+        {/* 3. 中间：转换流 (Processing) */}
+        <g>
+            {/* 流动线条 */}
+            <path d="M 200 145 C 400 145, 500 200, 800 180" fill="none" stroke={`url(#flow-grad-${id})`} strokeWidth="2" opacity="0.4" strokeDasharray="5 5">
+                <animate attributeName="stroke-dashoffset" from="20" to="0" dur="1s" repeatCount="indefinite" />
+            </path>
+             <path d="M 180 180 C 400 180, 500 220, 800 200" fill="none" stroke={`url(#flow-grad-${id})`} strokeWidth="1.5" opacity="0.3" strokeDasharray="5 5">
+                <animate attributeName="stroke-dashoffset" from="20" to="0" dur="1.5s" repeatCount="indefinite" />
+            </path>
+            
+            {/* 传输的数据粒子 */}
+            <circle r="3" fill="var(--ui2v-accent)" filter={`url(#glow-footer-${id})`}>
+                <animateMotion path="M 200 145 C 400 145, 500 200, 800 180" dur="3s" repeatCount="indefinite" />
+                <animate attributeName="opacity" values="0;1;0" dur="3s" repeatCount="indefinite" />
+            </circle>
+            <circle r="2" fill="var(--ui2v-primary)" filter={`url(#glow-footer-${id})`}>
+                <animateMotion path="M 180 180 C 400 180, 500 220, 800 200" dur="4s" repeatCount="indefinite" begin="1s" />
+                <animate attributeName="opacity" values="0;1;0" dur="4s" repeatCount="indefinite" begin="1s" />
+            </circle>
+        </g>
+
+        {/* 4. 右侧：视频/动态元素 (Output) */}
+        <g transform="translate(850, 140)">
+             {/* Video Frame 1 - Floating Up */}
+             <g opacity="0.7">
+                 <rect x="0" y="0" width="100" height="60" rx="4" stroke="var(--ui2v-accent)" strokeWidth="2" fill="var(--ui2v-accent)" fillOpacity="0.05">
+                     <animateTransform attributeName="transform" type="translate" values="0 0; 0 -10; 0 0" dur="6s" repeatCount="indefinite" />
+                 </rect>
+                 {/* Play Icon */}
+                 <path d="M 42 20 L 65 30 L 42 40 Z" fill="var(--ui2v-accent)">
+                     <animateTransform attributeName="transform" type="translate" values="0 0; 0 -10; 0 0" dur="6s" repeatCount="indefinite" />
+                     <animate attributeName="opacity" values="0.6;1;0.6" dur="2s" repeatCount="indefinite" />
+                 </path>
+                 {/* Film strips */}
+                 <rect x="5" y="5" width="4" height="6" fill="var(--ui2v-accent)" opacity="0.5"><animateTransform attributeName="transform" type="translate" values="0 0; 0 -10; 0 0" dur="6s" repeatCount="indefinite" /></rect>
+                 <rect x="5" y="49" width="4" height="6" fill="var(--ui2v-accent)" opacity="0.5"><animateTransform attributeName="transform" type="translate" values="0 0; 0 -10; 0 0" dur="6s" repeatCount="indefinite" /></rect>
+                 <rect x="91" y="5" width="4" height="6" fill="var(--ui2v-accent)" opacity="0.5"><animateTransform attributeName="transform" type="translate" values="0 0; 0 -10; 0 0" dur="6s" repeatCount="indefinite" /></rect>
+                 <rect x="91" y="49" width="4" height="6" fill="var(--ui2v-accent)" opacity="0.5"><animateTransform attributeName="transform" type="translate" values="0 0; 0 -10; 0 0" dur="6s" repeatCount="indefinite" /></rect>
+             </g>
+
+             {/* Floating Elements behind */}
+             <rect x="60" y="-40" width="80" height="50" rx="4" stroke="var(--ui2v-primary)" strokeWidth="1" opacity="0.3">
+                 <animateTransform attributeName="transform" type="translate" values="0 0; 0 -15; 0 0" dur="8s" repeatCount="indefinite" begin="1s" />
+             </rect>
+        </g>
+
+        {/* 5. 扫描光效 */}
+        <rect x="0" y="0" width="2" height="300" fill={`url(#flow-grad-vertical-${id})`} opacity="0.1">
+             <animate attributeName="x" values="-100;1300" dur="8s" repeatCount="indefinite" />
+        </rect>
       </svg>
     </div>
   );
