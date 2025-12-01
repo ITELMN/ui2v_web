@@ -130,13 +130,6 @@ export function BackgroundDecorations() {
           strokeWidth="1"
           style={{ opacity: 0.3 }}
         />
-        <path
-          d="M0 600 Q 500 500 1000 700 T 2000 400"
-          fill="none"
-          stroke="url(#line-gradient)"
-          strokeWidth="1"
-          style={{ opacity: 0.2 }}
-        />
       </svg>
     </div>
   );

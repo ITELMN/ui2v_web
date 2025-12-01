@@ -24,6 +24,7 @@ import {
   MarketerAnim, 
   EducatorAnim 
 } from "@/components/NewAiDecorations";
+import { ProcessFlowAnim } from "@/components/ProcessFlowAnim";
 import { HeroFlowAnim, AiLogicIcon, LocalLogicIcon, EasyLogicIcon } from "@/components/HeroFlowAnim";
 import { 
   FaDownload, 
@@ -171,6 +172,11 @@ export default function Home() {
 
       {/* 核心特性 - 精简版 */}
       <section className={styles.featuresSection} style={{ position: 'relative' }}>
+        {/* Process Flow Animation */}
+        <div style={{ marginBottom: '80px' }}>
+          <ProcessFlowAnim />
+        </div>
+
         <div className={styles.sectionHeader} style={{ position: 'relative', zIndex: 1 }}>
           <Heading className={styles.sectionTitle}>
               {t("features.title")}

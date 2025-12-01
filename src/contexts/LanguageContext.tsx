@@ -30,6 +30,17 @@ const translations = {
     "hero.privacy": "数据安全",
     "hero.ai": "AI 驱动",
 
+    // Process Flow
+    "process.input": "输入提示词",
+    "process.processing": "AI 处理中",
+    "process.output": "生成视频",
+    "process.tag.local": "本地运行",
+    "process.tag.privacy": "隐私安全",
+    "process.tag.model": "AI 模型",
+    "process.tag.render": "渲染",
+    "process.tag.4k": "4K 画质",
+    "process.tag.fps": "60 FPS",
+
     // Features
     "features.title": "三大核心优势",
     "features.subtitle": "让动画创作回归简单",
@@ -140,6 +151,17 @@ const translations = {
     "hero.local": "Local Execution",
     "hero.privacy": "Data Security",
     "hero.ai": "AI-Powered",
+
+    // Process Flow
+    "process.input": "INPUT PROMPT",
+    "process.processing": "AI PROCESSING",
+    "process.output": "GENERATED VIDEO",
+    "process.tag.local": "Local",
+    "process.tag.privacy": "Private",
+    "process.tag.model": "Model",
+    "process.tag.render": "Render",
+    "process.tag.4k": "4K RES",
+    "process.tag.fps": "60 FPS",
 
     // Features
     "features.title": "Three Core Advantages",
