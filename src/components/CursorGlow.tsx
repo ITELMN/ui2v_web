@@ -41,12 +41,10 @@ export function CursorGlow() {
           width: "1200px",
           height: "1200px",
           transform: "translate(-50%, -50%)",
-          background: "radial-gradient(circle, rgba(139, 92, 246, 0.02) 0%, rgba(236, 72, 153, 0.01) 25%, transparent 50%)",
-          filter: "blur(150px)",
-          backdropFilter: "blur(40px) saturate(150%)",
-          WebkitBackdropFilter: "blur(40px) saturate(150%)",
-          transition: "left 0.25s ease-out, top 0.25s ease-out",
-          opacity: 0.3,
+          background: "radial-gradient(circle, rgba(139, 92, 246, 0.08) 0%, rgba(59, 130, 246, 0.04) 30%, transparent 70%)",
+          filter: "blur(100px)",
+          transition: "left 0.15s cubic-bezier(0.23, 1, 0.32, 1), top 0.15s cubic-bezier(0.23, 1, 0.32, 1)",
+          opacity: 0.4,
         }}
       />
     </div>

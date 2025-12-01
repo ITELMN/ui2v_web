@@ -9,6 +9,7 @@ import {
 import { useLanguage } from "@/contexts/LanguageContext";
 import { iconLibrary } from "@/resources/icons";
 import Image from "next/image";
+import { Footer } from "@/components/Footer";
 import HeroVersionBadge from "@/components/HeroVersionBadge";
 import styles from "./page.module.css";
 import { 
@@ -30,8 +31,8 @@ import { HiSparkles } from "react-icons/hi";
 export default function Home() {
   const { t } = useLanguage();
 
-    return (
-    <div className={styles.pageContainer}>
+  return (
+    <div className={`${styles.pageContainer} bg-dot-grid`}>
       {/* Hero Section - 全新设计 */}
       <section className={styles.heroSection}>
         <div className={styles.heroContent}>
@@ -42,12 +43,47 @@ export default function Home() {
               {t("hero.badge")}
             </div>
 
-            <Heading className={styles.heroTitle}>
-            {t("hero.title")}
-          </Heading>
+            <Heading className={`${styles.heroTitle} text-gradient`} style={{ position: 'relative', display: 'inline-block' }}>
+              {t("hero.title")}
+              <svg 
+                className="hero-decor-star"
+                width="40" 
+                height="40" 
+                viewBox="0 0 24 24" 
+                fill="currentColor" 
+                style={{ 
+                  position: 'absolute', 
+                  top: '-20px', 
+                  right: '-30px', 
+                  color: '#FCD34D',
+                  zIndex: -1,
+                  opacity: 0.8
+                }}
+              >
+                <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z" />
+              </svg>
+            </Heading>
 
-            <Text className={styles.heroSubtitle}>
-            {t("hero.subtitle")}
+            <Text className={`${styles.heroSubtitle} text-shimmer`} style={{ position: 'relative' }}>
+              {t("hero.subtitle")}
+              <svg 
+                className="hero-decor-underline"
+                width="120" 
+                height="10" 
+                viewBox="0 0 120 10" 
+                fill="none" 
+                stroke="currentColor" 
+                strokeWidth="2"
+                style={{ 
+                  position: 'absolute', 
+                  bottom: '-10px', 
+                  left: '0', 
+                  color: 'var(--ui2v-accent)',
+                  opacity: 0.6 
+                }}
+              >
+                <path d="M0 5 Q 60 10 120 5" />
+              </svg>
             </Text>
             
             <Text className={styles.heroDescription}>
@@ -89,9 +125,6 @@ export default function Home() {
               <div className={styles.tag}>{t("hero.privacy")}</div>
               <div className={styles.tag}>{t("hero.ai")}</div>
             </div>
-
-            {/* 版本信息徽章 */}
-            <HeroVersionBadge />
           </div>
 
           {/* 右侧预览图 */}
@@ -109,6 +142,10 @@ export default function Home() {
             />
               <div className={styles.previewGlow}></div>
           </div>
+            {/* 版本信息徽章 - 移动到图片下方 */}
+            <div style={{ marginTop: '24px', display: 'flex', justifyContent: 'center' }}>
+              <HeroVersionBadge />
+            </div>
           </div>
         </div>
       </section>
@@ -125,11 +162,11 @@ export default function Home() {
         </div>
 
         <div className={styles.featuresGrid}>
-          <div className={styles.featureCard}>
-            <div className={`${styles.featureIcon} ${styles.aiIcon}`}>
+          <div className={`${styles.featureCard} card-hover-effect`}>
+            <div className={`${styles.featureIcon} ${styles.aiIcon} animate-float`}>
               <FaRobot />
         </div>
-            <Heading className={styles.featureTitle}>
+            <Heading className={`${styles.featureTitle} text-gradient`}>
               {t("features.ai.title")}
             </Heading>
             <Text className={styles.featureDesc}>
@@ -137,11 +174,11 @@ export default function Home() {
             </Text>
           </div>
 
-          <div className={styles.featureCard}>
-            <div className={`${styles.featureIcon} ${styles.localIcon}`}>
+          <div className={`${styles.featureCard} card-hover-effect`}>
+            <div className={`${styles.featureIcon} ${styles.localIcon} animate-float`}>
               <FaHome />
             </div>
-            <Heading className={styles.featureTitle}>
+            <Heading className={`${styles.featureTitle} text-gradient`}>
               {t("features.local.title")}
           </Heading>
             <Text className={styles.featureDesc}>
@@ -149,11 +186,11 @@ export default function Home() {
           </Text>
           </div>
 
-          <div className={styles.featureCard}>
-            <div className={`${styles.featureIcon} ${styles.easyIcon}`}>
+          <div className={`${styles.featureCard} card-hover-effect`}>
+            <div className={`${styles.featureIcon} ${styles.easyIcon} animate-float`}>
               <FaBolt />
           </div>
-            <Heading className={styles.featureTitle}>
+            <Heading className={`${styles.featureTitle} text-gradient`}>
               {t("features.easy.title")}
             </Heading>
             <Text className={styles.featureDesc}>
@@ -175,50 +212,50 @@ export default function Home() {
         </div>
 
         <div className={styles.capabilitiesGrid}>
-          <div className={styles.capabilityItem}>
+          <div className={`${styles.capabilityItem} card-hover-effect`}>
             <div className={styles.capabilityIcon}><FaChartBar /></div>
             <div className={styles.capabilityText}>
-              <strong>{t("capabilities.layers")}</strong>
+              <strong className="text-gradient-primary">{t("capabilities.layers")}</strong>
               <span>{t("capabilities.layers.desc")}</span>
             </div>
           </div>
 
-          <div className={styles.capabilityItem}>
+          <div className={`${styles.capabilityItem} card-hover-effect`}>
             <div className={styles.capabilityIcon}><FaClock /></div>
             <div className={styles.capabilityText}>
-              <strong>{t("capabilities.timeline")}</strong>
+              <strong className="text-gradient-primary">{t("capabilities.timeline")}</strong>
               <span>{t("capabilities.timeline.desc")}</span>
                 </div>
             </div>
 
-          <div className={styles.capabilityItem}>
+          <div className={`${styles.capabilityItem} card-hover-effect`}>
             <div className={styles.capabilityIcon}><HiSparkles /></div>
             <div className={styles.capabilityText}>
-              <strong>{t("capabilities.ai")}</strong>
+              <strong className="text-gradient-primary">{t("capabilities.ai")}</strong>
               <span>{t("capabilities.ai.desc")}</span>
         </div>
           </div>
 
-          <div className={styles.capabilityItem}>
+          <div className={`${styles.capabilityItem} card-hover-effect`}>
             <div className={styles.capabilityIcon}><FaSave /></div>
             <div className={styles.capabilityText}>
-              <strong>{t("capabilities.export")}</strong>
+              <strong className="text-gradient-primary">{t("capabilities.export")}</strong>
               <span>{t("capabilities.export.desc")}</span>
           </div>
           </div>
 
-          <div className={styles.capabilityItem}>
+          <div className={`${styles.capabilityItem} card-hover-effect`}>
             <div className={styles.capabilityIcon}><FaPalette /></div>
             <div className={styles.capabilityText}>
-              <strong>{t("capabilities.engines")}</strong>
+              <strong className="text-gradient-primary">{t("capabilities.engines")}</strong>
               <span>{t("capabilities.engines.desc")}</span>
                 </div>
               </div>
 
-          <div className={styles.capabilityItem}>
+          <div className={`${styles.capabilityItem} card-hover-effect`}>
             <div className={styles.capabilityIcon}><FaPlug /></div>
             <div className={styles.capabilityText}>
-              <strong>{t("capabilities.providers")}</strong>
+              <strong className="text-gradient-primary">{t("capabilities.providers")}</strong>
               <span>{t("capabilities.providers.desc")}</span>
             </div>
           </div>
@@ -227,32 +264,32 @@ export default function Home() {
 
       {/* 适用场景 */}
       <section className={styles.usecasesSection}>
-        <Heading className={styles.sectionTitle}>
+        <Heading className={`${styles.sectionTitle} text-gradient`}>
           {t("usecases.title")}
           </Heading>
 
         <div className={styles.usecasesGrid}>
-          <div className={styles.usecaseCard}>
-            <div className={styles.usecaseIcon}><FaVideo /></div>
-            <strong>{t("usecases.creator")}</strong>
+          <div className={`${styles.usecaseCard} card-hover-effect`}>
+            <div className={`${styles.usecaseIcon} animate-float`}><FaVideo /></div>
+            <strong className="text-gradient-primary">{t("usecases.creator")}</strong>
             <span>{t("usecases.creator.desc")}</span>
         </div>
 
-          <div className={styles.usecaseCard}>
-            <div className={styles.usecaseIcon}><FaPalette /></div>
-            <strong>{t("usecases.designer")}</strong>
+          <div className={`${styles.usecaseCard} card-hover-effect`}>
+            <div className={`${styles.usecaseIcon} animate-float`}><FaPalette /></div>
+            <strong className="text-gradient-primary">{t("usecases.designer")}</strong>
             <span>{t("usecases.designer.desc")}</span>
         </div>
 
-          <div className={styles.usecaseCard}>
-            <div className={styles.usecaseIcon}><FaChartLine /></div>
-            <strong>{t("usecases.marketer")}</strong>
+          <div className={`${styles.usecaseCard} card-hover-effect`}>
+            <div className={`${styles.usecaseIcon} animate-float`}><FaChartLine /></div>
+            <strong className="text-gradient-primary">{t("usecases.marketer")}</strong>
             <span>{t("usecases.marketer.desc")}</span>
           </div>
 
-          <div className={styles.usecaseCard}>
-            <div className={styles.usecaseIcon}><FaBook /></div>
-            <strong>{t("usecases.educator")}</strong>
+          <div className={`${styles.usecaseCard} card-hover-effect`}>
+            <div className={`${styles.usecaseIcon} animate-float`}><FaBook /></div>
+            <strong className="text-gradient-primary">{t("usecases.educator")}</strong>
             <span>{t("usecases.educator.desc")}</span>
           </div>
         </div>
@@ -262,7 +299,7 @@ export default function Home() {
       <section className={styles.ctaSection}>
         <div className={styles.ctaContainer}>
           <div className={styles.ctaMain}>
-            <Heading className={styles.ctaTitle}>
+            <Heading className={`${styles.ctaTitle} text-shimmer`}>
             {t("cta.title")}
         </Heading>
 
@@ -315,21 +352,7 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className={styles.footer}>
-        <div className={styles.footerContent}>
-          <div className={styles.footerPlatforms}>
-            <Text className={styles.footerLabel}>{t("footer.platform")}</Text>
-            <div className={styles.footerPlatformList}>
-              <span className={`${styles.platformBadge} ${styles.active}`}>{t("footer.windows")}</span>
-              <span className={`${styles.platformBadge} ${styles.coming}`}>{t("footer.mac")}</span>
-            </div>
-          </div>
-          
-          <Text className={styles.footerCopyright}>
-          {t("footer.copyright")}
-        </Text>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

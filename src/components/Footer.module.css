@@ -1,0 +1,112 @@
+.footer {
+  width: 100%;
+  padding: 24px 0;
+  margin-top: 60px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  background: transparent;
+  position: relative;
+  z-index: 10;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.leftSection {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.logo {
+  opacity: 0.9;
+}
+
+.brandName {
+  font-size: 14px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.8);
+  letter-spacing: -0.01em;
+}
+
+.divider {
+  color: rgba(255, 255, 255, 0.1);
+  font-size: 14px;
+}
+
+.copyright {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.rightSection {
+  display: flex;
+  align-items: center;
+}
+
+.platformInfo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.platformLabel {
+  font-size: 11px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.badges {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.badge {
+  font-size: 11px;
+  font-weight: 500;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.badge.active {
+  background: rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.badge.coming {
+  color: rgba(255, 255, 255, 0.2);
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-start;
+  }
+  
+  .leftSection {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  
+  .rightSection {
+    width: 100%;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255, 255, 255, 0.03);
+  }
+}

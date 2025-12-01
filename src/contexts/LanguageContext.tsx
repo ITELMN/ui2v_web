@@ -237,37 +237,26 @@ const translations = {
 };
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  // Initialize with a function to avoid hydration mismatch
-  const [language, setLanguageState] = useState<Language>(() => {
-    // During SSR, use a default value
-    if (typeof window === "undefined") {
-      return "zh"; // Default server-side language
-    }
-    
-    // Client-side initialization
-    const savedLang = localStorage.getItem("ui2v-language") as Language;
-    if (savedLang && (savedLang === "zh" || savedLang === "en")) {
-      return savedLang;
-    }
-    
-    // Auto-detect browser/system language
-    const browserLang = navigator.language.toLowerCase();
-    const detectedLang = browserLang.includes("zh") ? "zh" : "en";
-    localStorage.setItem("ui2v-language", detectedLang);
-    return detectedLang;
-  });
-  
+  // Always start with a consistent default for SSR
+  const [language, setLanguageState] = useState<Language>("zh");
   const [isHydrated, setIsHydrated] = useState(false);
 
   useEffect(() => {
     setIsHydrated(true);
     
-    // Double-check language preference after hydration
+    // Client-side initialization logic
     const savedLang = localStorage.getItem("ui2v-language") as Language;
-    if (savedLang && (savedLang === "zh" || savedLang === "en") && savedLang !== language) {
+    if (savedLang && (savedLang === "zh" || savedLang === "en")) {
       setLanguageState(savedLang);
+    } else {
+      // Auto-detect if no saved preference
+      const browserLang = navigator.language.toLowerCase();
+      const detectedLang = browserLang.includes("zh") ? "zh" : "en";
+      if (detectedLang !== "zh") {
+        setLanguageState(detectedLang);
+      }
     }
-  }, [language]);
+  }, []);
 
   const setLanguage = (lang: Language) => {
     setLanguageState(lang);

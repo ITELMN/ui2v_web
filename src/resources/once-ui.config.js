@@ -51,12 +51,12 @@ const fonts = {
 // default customization applied to the HTML in the main layout.tsx
 const style = {
   theme: "dark", // dark | light | system
-  neutral: "slate", // sand | gray | slate
+  neutral: "gray", // sand | gray | slate
   brand: "violet", // blue | indigo | violet | magenta | pink | red | orange | yellow | moss | green | emerald | aqua | cyan
-  accent: "magenta", // blue | indigo | violet | magenta | pink | red | orange | yellow | moss | green | emerald | aqua | cyan
+  accent: "cyan", // blue | indigo | violet | magenta | pink | red | orange | yellow | moss | green | emerald | aqua | cyan
   solid: "contrast", // color | contrast | inverse
-  solidStyle: "plastic", // flat | plastic
-  border: "playful", // rounded | playful | conservative
+  solidStyle: "flat", // flat | plastic
+  border: "rounded", // rounded | playful | conservative
   surface: "translucent", // filled | translucent
   transition: "all", // all | micro | macro
   scaling: "100", // 90 | 95 | 100 | 105 | 110

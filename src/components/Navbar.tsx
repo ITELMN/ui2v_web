@@ -30,10 +30,10 @@ export function Navbar() {
           zIndex: 9999,
           backdropFilter: isScrolled ? "blur(20px)" : "blur(10px)",
           background: isScrolled 
-            ? "rgba(10, 13, 20, 0.9)" 
-            : "rgba(10, 13, 20, 0.6)",
+            ? "rgba(10, 10, 12, 0.8)" 
+            : "transparent",
           borderBottom: isScrolled 
-            ? "1px solid rgba(139, 92, 246, 0.2)" 
+            ? "1px solid rgba(255, 255, 255, 0.08)" 
             : "1px solid transparent",
           transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
           contain: "none",
@@ -74,27 +74,26 @@ export function Navbar() {
               style={{ display: "block" }}
             />
             <span
+              className="text-gradient"
               style={{
-                fontSize: "22px",
-                fontWeight: 800,
-                background: "linear-gradient(135deg, #fff 0%, #a78bfa 100%)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundClip: "text",
-                letterSpacing: "-0.5px",
+                fontSize: "20px",
+                fontWeight: 700,
+                letterSpacing: "-0.02em",
               }}
             >
               Ui2v
             </span>
             <span
+              className="text-glow-accent"
               style={{
-                fontSize: "11px",
-                fontWeight: 700,
-                padding: "2px 8px",
-                background: "rgba(139, 92, 246, 0.2)",
-                border: "1px solid rgba(139, 92, 246, 0.4)",
-                borderRadius: "12px",
-                color: "#a78bfa",
+                fontSize: "10px",
+                fontWeight: 600,
+                padding: "2px 6px",
+                background: "rgba(255, 255, 255, 0.1)",
+                border: "1px solid rgba(255, 255, 255, 0.1)",
+                borderRadius: "6px",
+                color: "rgba(255, 255, 255, 0.8)",
+                letterSpacing: "0.02em",
               }}
             >
               BETA

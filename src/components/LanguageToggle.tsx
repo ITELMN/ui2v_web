@@ -52,7 +52,7 @@ export function LanguageToggle() {
             bottom: "-40px",
             left: "50%",
             transform: "translateX(-50%)",
-            background: "rgba(20, 25, 35, 0.95)",
+            background: "rgba(15, 15, 15, 0.95)",
             border: "1px solid rgba(255, 255, 255, 0.1)",
             borderRadius: "6px",
             padding: "6px 12px",
