@@ -4,10 +4,13 @@ import { useState, useEffect } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { LanguageToggle } from "./LanguageToggle";
 import Image from "next/image";
+import { cn } from "@/lib/utils";
+import { HiMenu, HiX } from "react-icons/hi";
 
 export function Navbar() {
   const { language } = useLanguage();
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -18,207 +21,163 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    // Only handle smooth scroll for anchor links (starting with #)
+    if (href.startsWith("#")) {
+      e.preventDefault();
+      const element = document.querySelector(href);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth", block: "start" });
+        setIsMobileMenuOpen(false);
+      }
+    }
+  };
+
   return (
     <>
       <nav
-        style={{
-          position: "fixed",
-          top: 0,
-          left: 0,
-          right: 0,
-          width: "100%",
-          zIndex: 9999,
-          backdropFilter: isScrolled ? "blur(20px)" : "blur(10px)",
-          background: isScrolled 
-            ? "rgba(255, 255, 255, 0.01)" 
-            : "transparent",
-          borderBottom: isScrolled 
-            ? "1px solid rgba(255, 255, 255, 0.08)" 
-            : "1px solid transparent",
-          transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
-          contain: "none",
-        }}
+        className={cn(
+          "fixed top-0 left-0 right-0 w-full z-[9999]",
+          "transition-all duration-300 ease-out",
+          isScrolled
+            ? "bg-white/[0.01] backdrop-blur-xl border-b border-white/[0.08]"
+            : "bg-transparent backdrop-blur-md border-b border-transparent"
+        )}
       >
         {/* Animated Bottom Glow Line */}
-        <div 
-          style={{
-            position: 'absolute',
-            bottom: 0,
-            left: 0,
-            width: '100%',
-            height: '1px',
-            background: 'linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.5), transparent)',
-            opacity: isScrolled ? 1 : 0,
-            transition: 'opacity 0.5s ease',
-            zIndex: 2
-          }}
+        <div
+          className={cn(
+            "absolute bottom-0 left-0 w-full h-px",
+            "bg-gradient-to-r from-transparent via-primary-500/50 to-transparent",
+            "transition-opacity duration-500",
+            isScrolled ? "opacity-100" : "opacity-0"
+          )}
         >
-          <div style={{
-            position: 'absolute',
-            top: 0,
-            left: '-50%',
-            width: '50%',
-            height: '100%',
-            background: 'linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent)',
-            animation: 'scanline 3s linear infinite',
-            opacity: 0.5
-          }} />
+          <div className="absolute top-0 -left-1/2 w-1/2 h-full bg-gradient-to-r from-transparent via-white/80 to-transparent opacity-50 animate-[scanline_3s_linear_infinite]" />
         </div>
 
-        <div
-          style={{
-            maxWidth: "1200px",
-            margin: "0 auto",
-            padding: "14px 24px",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-          }}
-        >
+        <div className="max-w-[1200px] mx-auto px-6 lg:px-6 py-3.5 flex items-center justify-between">
           {/* Logo */}
           <a
             href="/"
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: "10px",
-              textDecoration: "none",
-              transition: "transform 0.3s ease",
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.transform = "scale(1.02)";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.transform = "scale(1)";
-            }}
+            onClick={(e) => handleSmoothScroll(e, "/")}
+            className="flex items-center gap-2.5 no-underline transition-transform duration-300 hover:scale-[1.02]"
           >
             <Image
               src="/logo.svg"
               alt="Ui2v"
               width={32}
               height={32}
-              style={{ display: "block" }}
+              className="block"
             />
-            <span
-              className="text-gradient"
-              style={{
-                fontSize: "20px",
-                fontWeight: 700,
-                letterSpacing: "-0.02em",
-              }}
-            >
+            <span className="text-gradient text-xl font-bold tracking-tight">
               Ui2v
             </span>
-            <span
-              className="text-glow-accent"
-              style={{
-                fontSize: "10px",
-                fontWeight: 600,
-                padding: "2px 6px",
-                background: "rgba(255, 255, 255, 0.1)",
-                border: "1px solid rgba(255, 255, 255, 0.1)",
-                borderRadius: "6px",
-                color: "rgba(255, 255, 255, 0.8)",
-                letterSpacing: "0.02em",
-              }}
-            >
+            <span className="text-[10px] font-semibold px-1.5 py-0.5 bg-white/10 border border-white/10 rounded-md text-white/80 tracking-wide">
               BETA
             </span>
           </a>
 
-          {/* Right Side */}
-          <div
-            style={{
-              display: "flex",
-              gap: "12px",
-              alignItems: "center",
-            }}
-          >
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex gap-3 items-center">
             <a
               href="/faq"
-              style={{
-                padding: "10px 20px",
-                fontSize: "15px",
-                fontWeight: 600,
-                color: "rgba(255, 255, 255, 0.85)",
-                background: "rgba(255, 255, 255, 0.05)",
-                border: "1px solid rgba(139, 92, 246, 0.2)",
-                borderRadius: "10px",
-                textDecoration: "none",
-                transition: "all 0.3s ease",
-                backdropFilter: "blur(10px)",
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.background = "rgba(139, 92, 246, 0.15)";
-                e.currentTarget.style.borderColor = "rgba(139, 92, 246, 0.4)";
-                e.currentTarget.style.color = "#fff";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.background = "rgba(255, 255, 255, 0.05)";
-                e.currentTarget.style.borderColor = "rgba(139, 92, 246, 0.2)";
-                e.currentTarget.style.color = "rgba(255, 255, 255, 0.85)";
-              }}
+              onClick={(e) => handleSmoothScroll(e, "/faq")}
+              className={cn(
+                "px-5 py-2.5 text-[15px] font-semibold",
+                "text-white/85 bg-white/5 border border-primary-500/20 rounded-lg",
+                "no-underline transition-all duration-300 backdrop-blur-md",
+                "hover:bg-primary-500/15 hover:border-primary-500/40 hover:text-white"
+              )}
             >
               FAQ
             </a>
 
             <a
               href="https://new.ui2v.com/download"
-              style={{
-                padding: "10px 28px",
-                fontSize: "15px",
-                fontWeight: 700,
-                color: "#fff",
-                background: "linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%)",
-                borderRadius: "10px",
-                textDecoration: "none",
-                transition: "all 0.3s ease",
-                boxShadow: "0 4px 16px rgba(139, 92, 246, 0.4)",
-                position: "relative",
-                zIndex: 1,
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.transform = "translateY(-2px)";
-                e.currentTarget.style.boxShadow = "0 6px 20px rgba(139, 92, 246, 0.6)";
-                e.currentTarget.style.zIndex = "100";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = "translateY(0)";
-                e.currentTarget.style.boxShadow = "0 4px 16px rgba(139, 92, 246, 0.4)";
-                e.currentTarget.style.zIndex = "1";
-              }}
+              className={cn(
+                "px-7 py-2.5 text-[15px] font-bold text-white",
+                "bg-gradient-to-r from-primary-400 to-primary-600 rounded-lg",
+                "no-underline transition-all duration-300",
+                "shadow-[0_4px_16px_rgba(192,132,252,0.4)]",
+                "hover:-translate-y-0.5 hover:shadow-[0_6px_20px_rgba(192,132,252,0.6)]"
+              )}
             >
               {language === "zh" ? "立即下载" : "Download"}
             </a>
 
             <LanguageToggle />
           </div>
+
+          {/* Mobile Menu Button */}
+          <button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className={cn(
+              "md:hidden p-2 text-white/85 transition-colors duration-300",
+              "hover:text-white hover:bg-white/5 rounded-lg"
+            )}
+            aria-label="Toggle mobile menu"
+          >
+            {isMobileMenuOpen ? (
+              <HiX className="w-6 h-6" />
+            ) : (
+              <HiMenu className="w-6 h-6" />
+            )}
+          </button>
+        </div>
+
+        {/* Mobile Menu */}
+        <div
+          className={cn(
+            "md:hidden overflow-hidden transition-all duration-300 ease-in-out",
+            "bg-neutral-950/95 backdrop-blur-xl border-t border-white/5",
+            isMobileMenuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+          )}
+        >
+          <div className="px-6 py-4 flex flex-col gap-3">
+            <a
+              href="/faq"
+              onClick={(e) => handleSmoothScroll(e, "/faq")}
+              className={cn(
+                "px-5 py-3 text-[15px] font-semibold text-center",
+                "text-white/85 bg-white/5 border border-primary-500/20 rounded-lg",
+                "no-underline transition-all duration-300",
+                "hover:bg-primary-500/15 hover:border-primary-500/40 hover:text-white"
+              )}
+            >
+              FAQ
+            </a>
+
+            <a
+              href="https://new.ui2v.com/download"
+              className={cn(
+                "px-7 py-3 text-[15px] font-bold text-white text-center",
+                "bg-gradient-to-r from-primary-400 to-primary-600 rounded-lg",
+                "no-underline transition-all duration-300",
+                "shadow-[0_4px_16px_rgba(192,132,252,0.4)]"
+              )}
+            >
+              {language === "zh" ? "立即下载" : "Download"}
+            </a>
+
+            <div className="flex justify-center pt-2">
+              <LanguageToggle />
+            </div>
+          </div>
         </div>
       </nav>
 
       {/* Spacer */}
-      <div style={{ height: "60px" }} />
+      <div className="h-[60px]" />
 
       <style jsx global>{`
-        nav {
-          position: fixed !important;
-          top: 0 !important;
-          left: 0 !important;
-          right: 0 !important;
-          width: 100% !important;
-          z-index: 9999 !important;
-          transform: none !important;
-        }
-        
-        @media (max-width: 640px) {
-          nav > div {
-            padding: 12px 16px !important;
-          }
-        }
-        
         @keyframes scanline {
-          0% { left: -50%; }
-          100% { left: 150%; }
+          0% {
+            left: -50%;
+          }
+          100% {
+            left: 150%;
+          }
         }
       `}</style>
     </>

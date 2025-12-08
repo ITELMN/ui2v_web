@@ -2,12 +2,21 @@
 
 # dependencies
 /node_modules
+/.kiro
 /.pnp
 .pnp.js
 .yarn/install-state.gz
 
 # testing
 /coverage
+*.test.ts
+*.test.tsx
+*.test.js
+*.test.jsx
+*.spec.ts
+*.spec.tsx
+*.spec.js
+*.spec.jsx
 
 # next.js
 /.next/
