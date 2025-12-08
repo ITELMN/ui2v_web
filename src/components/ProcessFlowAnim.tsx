@@ -15,11 +15,11 @@ export const ProcessFlowAnim = () => {
 
   // 主题色定义
   const colors = {
-    primary: "#8b5cf6", // violet-500
-    primaryGlow: "#a78bfa", // violet-400
-    secondary: "#ec4899", // pink-500
+    primary: "#9046ff", // vibrant purple
+    primaryGlow: "#C084FC", // light purple
+    secondary: "#C084FC", // light purple
     accent: "#3b82f6", // blue-500
-    bg: "#1e293b", // slate-800
+    bg: "#2e1065", // dark purple (was slate-800)
     text: "#e2e8f0", // slate-200
     textMuted: "#94a3b8", // slate-400
     success: "#10b981", // emerald-500
@@ -62,7 +62,7 @@ export const ProcessFlowAnim = () => {
           {/* 4. 视频画面渐变 */}
           <linearGradient id="video-screen" x1="0%" y1="0%" x2="100%" y2="100%">
             <stop offset="0%" stopColor="#2e1065" />
-            <stop offset="100%" stopColor="#831843" />
+            <stop offset="100%" stopColor="#581c87" />
           </linearGradient>
           
           {/* 5. 标签背景 */}
@@ -145,7 +145,7 @@ export const ProcessFlowAnim = () => {
         </style>
 
         {/* ==================== 1. LEFT: INPUT (Prompt) ==================== */}
-        <g transform="translate(120, 130)">
+        <g transform="translate(100, 130)">
           <text x="70" y="-90" className="label-title">{t("process.input")}</text>
           
           {/* Floating Cards Group */}
@@ -153,11 +153,11 @@ export const ProcessFlowAnim = () => {
             
             {/* Decorative Elements - Tags */}
             <g transform="translate(-30, -50)">
-               <rect width="60" height="20" rx="10" fill="#1e293b" stroke={colors.primary} strokeWidth="1" opacity="0.8" />
+               <rect width="60" height="20" rx="10" fill={colors.bg} stroke={colors.primary} strokeWidth="1" opacity="0.8" />
                <text x="30" y="14" className="label-tag" fill={colors.primaryGlow}>{t("process.tag.local")}</text>
             </g>
             <g transform="translate(110, 40)">
-               <rect width="60" height="20" rx="10" fill="#1e293b" stroke={colors.success} strokeWidth="1" opacity="0.8" />
+               <rect width="60" height="20" rx="10" fill={colors.bg} stroke={colors.success} strokeWidth="1" opacity="0.8" />
                <text x="30" y="14" className="label-tag" fill={colors.success}>{t("process.tag.privacy")}</text>
             </g>
 
@@ -204,28 +204,28 @@ export const ProcessFlowAnim = () => {
         {/* ==================== 2. CENTER: AI ENGINE ==================== */}
         <g transform="translate(500, 130)">
           {/* Left Connection Wire */}
-          <path d="M -230 0 L -80 0" className="wire" />
-          <path d="M -230 0 L -80 0" className="active-stream" />
+          <path d="M -260 0 L -80 0" className="wire" />
+          <path d="M -260 0 L -80 0" className="active-stream" />
           
           {/* Right Connection Wire */}
-          <path d="M 80 0 L 230 0" className="wire" />
-          <path d="M 80 0 L 230 0" className="active-stream" style={{ animationDelay: "0.5s" }} />
+          <path d="M 80 0 L 220 0" className="wire" />
+          <path d="M 80 0 L 220 0" className="active-stream" style={{ animationDelay: "0.5s" }} />
 
           {/* Traveling Particles (Multiple) */}
           <g>
             <circle r="2" fill="#fff" filter="url(#strong-glow)">
-              <animateMotion path="M -230 0 L -80 0" dur="1.5s" repeatCount="indefinite" />
+              <animateMotion path="M -260 0 L -80 0" dur="1.5s" repeatCount="indefinite" />
             </circle>
             <circle r="2" fill="#fff" filter="url(#strong-glow)">
-              <animateMotion path="M -230 0 L -80 0" dur="1.5s" begin="0.75s" repeatCount="indefinite" />
+              <animateMotion path="M -260 0 L -80 0" dur="1.5s" begin="0.75s" repeatCount="indefinite" />
             </circle>
           </g>
            <g>
             <circle r="2" fill="#fff" filter="url(#strong-glow)">
-              <animateMotion path="M 80 0 L 230 0" dur="1.5s" repeatCount="indefinite" />
+              <animateMotion path="M 80 0 L 220 0" dur="1.5s" repeatCount="indefinite" />
             </circle>
             <circle r="2" fill="#fff" filter="url(#strong-glow)">
-              <animateMotion path="M 80 0 L 230 0" dur="1.5s" begin="0.75s" repeatCount="indefinite" />
+              <animateMotion path="M 80 0 L 220 0" dur="1.5s" begin="0.75s" repeatCount="indefinite" />
             </circle>
           </g>
 
@@ -244,8 +244,8 @@ export const ProcessFlowAnim = () => {
              
              {/* Core Diamond Geometry */}
              <g transform="rotate(45)">
-               <rect x="-35" y="-35" width="70" height="70" rx="12" stroke={colors.primary} strokeWidth="2" fill="rgba(139, 92, 246, 0.1)" />
-               <rect x="-25" y="-25" width="50" height="50" rx="8" stroke={colors.secondary} strokeWidth="2" fill="rgba(236, 72, 153, 0.1)">
+               <rect x="-35" y="-35" width="70" height="70" rx="12" stroke={colors.primary} strokeWidth="2" fill="rgba(144, 70, 255, 0.1)" />
+               <rect x="-25" y="-25" width="50" height="50" rx="8" stroke={colors.secondary} strokeWidth="2" fill="rgba(192, 132, 252, 0.1)">
                   <animate attributeName="opacity" values="0.5;1;0.5" dur="2s" repeatCount="indefinite" />
                </rect>
                {/* Inner Chip */}
@@ -278,7 +278,7 @@ export const ProcessFlowAnim = () => {
         </g>
 
         {/* ==================== 3. RIGHT: OUTPUT (Video) ==================== */}
-        <g transform="translate(850, 130)">
+        <g transform="translate(830, 130)">
           <text x="0" y="-90" className="label-title">{t("process.output")}</text>
           
           {/* Video Player Container */}
@@ -287,7 +287,7 @@ export const ProcessFlowAnim = () => {
             <ellipse cx="0" cy="85" rx="100" ry="10" fill="#000" opacity="0.4" filter="url(#blur-glow)" />
             
             {/* Player Frame */}
-            <rect x="-110" y="-70" width="220" height="140" rx="16" fill="#1e293b" stroke="#475569" strokeWidth="1" />
+            <rect x="-110" y="-70" width="220" height="140" rx="16" fill={colors.bg} stroke="#475569" strokeWidth="1" />
             
             {/* Screen Area */}
             <g transform="translate(-100, -60)">
