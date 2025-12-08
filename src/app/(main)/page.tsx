@@ -25,7 +25,7 @@ import {
   EducatorAnim 
 } from "@/components/NewAiDecorations";
 import { ProcessFlowAnim } from "@/components/ProcessFlowAnim";
-import { HeroFlowAnim, AiLogicIcon, LocalLogicIcon, EasyLogicIcon } from "@/components/HeroFlowAnim";
+import { AiLogicIcon, LocalLogicIcon, EasyLogicIcon } from "@/components/HeroFlowAnim";
 import { 
   FaDownload, 
   FaRobot, 
@@ -51,10 +51,10 @@ export default function Home() {
 
   return (
     <div className={`${styles.pageContainer} bg-dot-grid`}>
-      <GlobalAmbientBg />
+      {/* <GlobalAmbientBg /> */}
       {/* Hero Section - 全新设计 */}
       <section className={styles.heroSection}>
-        <HeroFlowAnim />
+        {/* <HeroFlowAnim /> */}
         <div className={styles.heroContent}>
           {/* 左侧内容区 */}
           <div className={styles.heroText}>
