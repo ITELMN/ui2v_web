@@ -20,9 +20,7 @@ const nextConfig = {
   compress: true,
   
   // 实验性功能
-  experimental: {
-    optimizePackageImports: ['@once-ui-system/core'],
-  },
+  experimental: {},
   
   // 生产环境优化
   poweredByHeader: false,

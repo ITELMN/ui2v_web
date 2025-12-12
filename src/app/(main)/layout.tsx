@@ -1,29 +1,16 @@
 import '@/app/globals.css';
-import '@once-ui-system/core/css/styles.css';
-import '@once-ui-system/core/css/tokens.css';
 import '@/resources/custom.css'
+import type { Metadata } from 'next';
 
-import classNames from "classnames";
-
-import { baseURL, meta, fonts, style, dataStyle } from "@/resources/once-ui.config";
-import { Meta, Schema, Column, Flex } from "@once-ui-system/core";
 import { Providers } from '@/components/Providers';
 import { Navbar } from '@/components/Navbar';
 import { DynamicTitle } from '@/components/DynamicTitle';
 import { BackgroundDecorations } from '@/components/BackgroundDecorations';
 
-export async function generateMetadata() {
-  return Meta.generate({
-    title: meta.home.title,
-    description: meta.home.description,
-    baseURL: baseURL,
-    path: meta.home.path,
-    canonical: meta.home.canonical,
-    image: meta.home.image,
-    robots: meta.home.robots,
-    alternates: meta.home.alternates,
-  });
-}
+export const metadata: Metadata = {
+  title: 'Ui2v - 本地 AI 动画设计工具',
+  description: 'Ui2v 是一款完全本地运行的 AI 动画设计工具。用自然语言描述想法，AI 即刻生成精美动画。快速、安全、易用。',
+};
 
 export default function RootLayout({
   children,
@@ -31,25 +18,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <Flex
-      suppressHydrationWarning
-      as="html"
-      lang="en"
-      fillWidth
-      className={classNames(
-        fonts.heading.variable,
-        fonts.body.variable,
-        fonts.label.variable,
-        fonts.code.variable,
-      )}
-    >
-      <Schema
-        as="webPage"
-        baseURL={baseURL}
-        title={meta.home.title}
-        description={meta.home.description}
-        path={meta.home.path}
-      />
+    <html lang="zh" suppressHydrationWarning>
       <head>
         {/* Umami Analytics */}
         <script
@@ -64,52 +33,9 @@ export default function RootLayout({
               (function() {
                 try {
                   const root = document.documentElement;
-                  
-                  // Set defaults from config
-                  const config = ${JSON.stringify({
-                    theme: style.theme,
-                    brand: style.brand,
-                    accent: style.accent,
-                    neutral: style.neutral,
-                    solid: style.solid,
-                    'solid-style': style.solidStyle,
-                    border: style.border,
-                    surface: style.surface,
-                    transition: style.transition,
-                    scaling: style.scaling,
-                    'viz-style': dataStyle.variant,
-                  })};
-                  
-                  // Apply default values
-                  Object.entries(config).forEach(([key, value]) => {
-                    root.setAttribute('data-' + key, value);
-                  });
-                  
-                  // Resolve theme
-                  const resolveTheme = (themeValue) => {
-                    if (!themeValue || themeValue === 'system') {
-                      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-                    }
-                    return themeValue;
-                  };
-                  
-                  // Apply saved theme or use config default
-                  const savedTheme = localStorage.getItem('data-theme');
-                  // Only override with system preference if explicitly set to 'system'
-                  const resolvedTheme = savedTheme ? resolveTheme(savedTheme) : config.theme === 'system' ? resolveTheme(window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : config.theme;
-                  root.setAttribute('data-theme', resolvedTheme);
-                  
-                  // Apply any saved style overrides
-                  const styleKeys = Object.keys(config);
-                  styleKeys.forEach(key => {
-                    const value = localStorage.getItem('data-' + key);
-                    if (value) {
-                      root.setAttribute('data-' + key, value);
-                    }
-                  });
+                  root.setAttribute('data-theme', 'dark');
                 } catch (e) {
                   console.error('Failed to initialize theme:', e);
-                  document.documentElement.setAttribute('data-theme', 'dark');
                 }
               })();
             `,
@@ -128,11 +54,11 @@ export default function RootLayout({
           <DynamicTitle />
           <BackgroundDecorations />
           <Navbar />
-          <Column fillWidth style={{ position: 'relative', zIndex: 1, background: 'transparent' }}>
+          <main style={{ position: 'relative', zIndex: 1, background: 'transparent', width: '100%', flex: 1 }}>
             {children}
-          </Column>
+          </main>
         </Providers>
       </body>
-    </Flex>
+    </html>
   );
 }

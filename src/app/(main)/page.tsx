@@ -1,11 +1,6 @@
 "use client";
 
-import {
-  Heading,
-  Text,
-  Flex,
-  Button,
-} from "@once-ui-system/core";
+// Removed @once-ui-system/core imports - using native HTML elements
 import { useLanguage } from "@/contexts/LanguageContext";
 import { iconLibrary } from "@/resources/icons";
 import Image from "next/image";
@@ -90,7 +85,7 @@ export default function Home() {
               {t("hero.badge")}
             </div>
 
-            <Heading className={`${styles.heroTitle} text-gradient`} style={{ position: 'relative', display: 'inline-block' }}>
+            <h1 className={`${styles.heroTitle} text-gradient`} style={{ position: 'relative', display: 'inline-block' }}>
               {t("hero.title")}
               <HiSparkles 
                 className="hero-decor-star"
@@ -104,9 +99,9 @@ export default function Home() {
                   fontSize: '32px'
                 }}
               />
-            </Heading>
+            </h1>
 
-            <Text className={`${styles.heroSubtitle} text-shimmer`} style={{ position: 'relative' }}>
+            <p className={`${styles.heroSubtitle} text-shimmer`} style={{ position: 'relative' }}>
               {t("hero.subtitle")}
               <svg 
                 className="hero-decor-underline"
@@ -126,11 +121,11 @@ export default function Home() {
               >
                 <path d="M0 5 Q 60 10 120 5" />
               </svg>
-            </Text>
+            </p>
             
-            <Text className={styles.heroDescription}>
+            <p className={styles.heroDescription}>
             {t("hero.description")}
-          </Text>
+          </p>
 
             {/* CTA 按钮 */}
             <div className={styles.heroActions} style={{ position: 'relative' }}>
@@ -205,12 +200,12 @@ export default function Home() {
         </div>
 
         <div className={styles.sectionHeader} style={{ position: 'relative', zIndex: 1 }}>
-          <Heading className={styles.sectionTitle}>
+          <h2 className={styles.sectionTitle}>
               {t("features.title")}
-            </Heading>
-          <Text className={styles.sectionSubtitle}>
+            </h2>
+          <p className={styles.sectionSubtitle}>
             {t("features.subtitle")}
-          </Text>
+          </p>
         </div>
 
         <div className={styles.featuresGrid}>
@@ -219,12 +214,12 @@ export default function Home() {
             <div className={`${styles.featureIcon} ${styles.aiIcon} animate-float`}>
               <AiLogicIcon className="w-full h-full" />
             </div>
-            <Heading className={`${styles.featureTitle} text-gradient`}>
+            <h3 className={`${styles.featureTitle} text-gradient`}>
               {t("features.ai.title")}
-            </Heading>
-            <Text className={styles.featureDesc}>
+            </h3>
+            <p className={styles.featureDesc}>
               {t("features.ai.desc")}
-            </Text>
+            </p>
           </div>
 
           <div className={`${styles.featureCard} card-hover-effect`}>
@@ -232,12 +227,12 @@ export default function Home() {
             <div className={`${styles.featureIcon} ${styles.localIcon} animate-float`}>
               <LocalLogicIcon className="w-full h-full" />
             </div>
-            <Heading className={`${styles.featureTitle} text-gradient`}>
+            <h3 className={`${styles.featureTitle} text-gradient`}>
               {t("features.local.title")}
-            </Heading>
-            <Text className={styles.featureDesc}>
+            </h3>
+            <p className={styles.featureDesc}>
               {t("features.local.desc")}
-            </Text>
+            </p>
           </div>
 
           <div className={`${styles.featureCard} card-hover-effect`}>
@@ -245,12 +240,12 @@ export default function Home() {
             <div className={`${styles.featureIcon} ${styles.easyIcon} animate-float`}>
               <EasyLogicIcon className="w-full h-full" />
             </div>
-            <Heading className={`${styles.featureTitle} text-gradient`}>
+            <h3 className={`${styles.featureTitle} text-gradient`}>
               {t("features.easy.title")}
-            </Heading>
-            <Text className={styles.featureDesc}>
+            </h3>
+            <p className={styles.featureDesc}>
               {t("features.easy.desc")}
-            </Text>
+            </p>
           </div>
         </div>
       </section>
@@ -258,12 +253,12 @@ export default function Home() {
       {/* 功能亮点 - 网格展示 */}
       <section className={styles.capabilitiesSection} style={{ position: 'relative', overflow: 'hidden' }}>
         <div className={styles.sectionHeader} style={{ position: 'relative', zIndex: 1 }}>
-          <Heading className={styles.sectionTitle}>
+          <h2 className={styles.sectionTitle}>
             {t("capabilities.title")}
-            </Heading>
-          <Text className={styles.sectionSubtitle}>
+            </h2>
+          <p className={styles.sectionSubtitle}>
             {t("capabilities.subtitle")}
-            </Text>
+            </p>
         </div>
 
         <div className={styles.capabilitiesGrid} style={{ position: 'relative', zIndex: 1 }}>
@@ -337,9 +332,9 @@ export default function Home() {
 
       {/* 适用场景 */}
       <section className={styles.usecasesSection} style={{ position: 'relative', overflow: 'hidden' }}>
-        <Heading className={`${styles.sectionTitle} text-gradient`} style={{ position: 'relative', zIndex: 1 }}>
+        <h2 className={`${styles.sectionTitle} text-gradient`} style={{ position: 'relative', zIndex: 1 }}>
           {t("usecases.title")}
-          </Heading>
+          </h2>
         
         <div className={styles.usecasesGrid} style={{ position: 'relative', zIndex: 1 }}>
           <div className={`${styles.usecaseCard} card-hover-effect`} style={{ position: 'relative', overflow: 'hidden' }}>
@@ -380,9 +375,9 @@ export default function Home() {
         </div>
         <div className={styles.ctaContainer}>
           <div className={styles.ctaMain}>
-            <Heading className={`${styles.ctaTitle} text-shimmer`}>
+            <h2 className={`${styles.ctaTitle} text-shimmer`}>
             {t("cta.title")}
-        </Heading>
+        </h2>
 
             <a 
               href="https://new.ui2v.com/download" 

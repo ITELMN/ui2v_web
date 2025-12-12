@@ -1,5 +1,8 @@
 import { NextResponse } from "next/server";
 
+export const dynamic = 'force-dynamic';
+export const runtime = 'edge';
+
 export async function GET() {
   try {
     const response = await fetch("https://new.ui2v.com/update/exe/0.6.4", {

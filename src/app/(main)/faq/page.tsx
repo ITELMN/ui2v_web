@@ -1,15 +1,25 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { Heading, Text } from "@once-ui-system/core";
 import styles from "./page.module.css";
 import { HiLightBulb } from "react-icons/hi";
 import { FaBolt, FaWrench, FaComments } from "react-icons/fa";
 
+export const dynamic = 'force-dynamic';
+
 export default function FAQPage() {
   const { t } = useLanguage();
   const [openIndex, setOpenIndex] = useState<number>(0);
+  const [mounted, setMounted] = useState(false);
+  
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+  
+  if (!mounted) {
+    return <div>Loading...</div>;
+  }
 
   const faqCategories = [
     {
@@ -65,8 +75,8 @@ export default function FAQPage() {
       </div>
 
       <div className={styles.faqHeader}>
-        <Heading className={styles.faqMainTitle}>{t("faq.title")}</Heading>
-        <Text className={styles.faqSubtitle}>{t("faq.subtitle")}</Text>
+        <h1 className={styles.faqMainTitle}>{t("faq.title")}</h1>
+        <p className={styles.faqSubtitle}>{t("faq.subtitle")}</p>
       </div>
 
       <div className={styles.faqContent}>
@@ -116,7 +126,7 @@ export default function FAQPage() {
 
                     <div className={`${styles.faqAnswer} ${isOpen ? styles.open : ""}`}>
                       <div className={styles.faqAnswerContent}>
-                        <Text>{faq.answer}</Text>
+                        <p>{faq.answer}</p>
                       </div>
                     </div>
                   </div>
