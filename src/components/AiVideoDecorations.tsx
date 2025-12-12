@@ -316,7 +316,7 @@ export const FooterDecorBg = () => {
         </defs>
 
         {/* 1. 底部透视网格 */}
-        <g transform="perspective(500px) rotateX(60deg) translate(0, 100)">
+        <g transform="translate(0, 100) skewY(-10)">
              <path d="M0 250 L1200 250 M0 200 L1200 200 M0 150 L1200 150" stroke="var(--ui2v-primary)" strokeWidth="0.5" opacity="0.2" />
              {[...Array(13)].map((_, i) => (
                  <line key={i} x1={i * 100} y1="100" x2={i * 100 - 200} y2="400" stroke="var(--ui2v-primary)" strokeWidth="0.5" opacity="0.15" />

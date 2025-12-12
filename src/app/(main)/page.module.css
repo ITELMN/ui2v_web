@@ -2,10 +2,19 @@
 .pageContainer {
   width: 100%;
   min-height: 100vh;
-  background: linear-gradient(180deg, #030008 0%, #0a0015 50%, #030008 100%);
+  background: #030008 !important;
   color: #fff;
   overflow-x: hidden;
   position: relative;
+}
+
+.pageContainer::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(180deg, #030008 0%, #0a0015 50%, #030008 100%);
+  z-index: -1;
+  pointer-events: none;
 }
 
 /* ==================== BACKGROUND LAYER ==================== */
@@ -51,6 +60,7 @@
   padding: 140px 24px 100px;
   position: relative;
   z-index: 1;
+  background: transparent;
 }
 
 .heroContent {

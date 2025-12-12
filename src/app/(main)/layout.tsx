@@ -18,7 +18,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="zh" suppressHydrationWarning>
+    <html lang="zh" suppressHydrationWarning style={{ backgroundColor: '#030008' }}>
       <head>
         {/* Mobile viewport optimization */}
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
@@ -47,8 +47,7 @@ export default function RootLayout({
                 try {
                   const root = document.documentElement;
                   root.setAttribute('data-theme', 'dark');
-                  document.documentElement.style.backgroundColor = '#030008';
-                  document.body.style.backgroundColor = '#030008';
+                  root.style.backgroundColor = '#030008';
                 } catch (e) {
                   console.error('Failed to initialize theme:', e);
                 }
@@ -64,7 +63,7 @@ export default function RootLayout({
         <link rel="preload" href="/logo.svg" as="image" type="image/svg+xml" />
         <link rel="preload" href="/images/preview1.png" as="image" />
       </head>
-      <body suppressHydrationWarning style={{ margin: 0, padding: 0, position: 'relative', minHeight: '100vh', display: 'flex', flexDirection: 'column', width: '100%' }}>
+      <body suppressHydrationWarning style={{ margin: 0, padding: 0, position: 'relative', minHeight: '100vh', display: 'flex', flexDirection: 'column', width: '100%', backgroundColor: '#030008' }}>
         <Providers>
           <DynamicTitle />
           <BackgroundDecorations />

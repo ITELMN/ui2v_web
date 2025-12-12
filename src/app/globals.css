@@ -14,8 +14,12 @@
   --ui2v-border: rgba(255, 255, 255, 0.08);
 }
 
+html {
+  background-color: #030008 !important;
+}
+
 body {
-  background-color: #030008;
+  background-color: #030008 !important;
   color: white;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -23,6 +27,14 @@ body {
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
   text-size-adjust: 100%;
+}
+
+#__next {
+  background-color: #030008 !important;
+}
+
+main {
+  background-color: transparent !important;
 }
 
 @layer utilities {
