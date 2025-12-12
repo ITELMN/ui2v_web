@@ -4,28 +4,32 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import styles from "./Footer.module.css";
 import Image from "next/image";
 import { FooterDecorBg } from "./AiVideoDecorations";
-import { FaTwitter, FaDiscord, FaGithub, FaYoutube } from "react-icons/fa";
+import { FaTwitter, FaDiscord, FaGithub } from "react-icons/fa";
 
 export function Footer() {
   const { t } = useLanguage();
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className={styles.footer} style={{ position: 'relative', overflow: 'hidden' }}>
+    <footer className={styles.footer}>
       <FooterDecorBg />
-      <div className={styles.container} style={{ position: 'relative', zIndex: 1 }}>
+      
+      {/* Top gradient line */}
+      <div className={styles.topLine} />
+      
+      <div className={styles.container}>
         <div className={styles.leftSection}>
           <div className={styles.brand}>
             <Image
               src="/logo.svg"
               alt="Ui2v"
-              width={20}
-              height={20}
+              width={24}
+              height={24}
               className={styles.logo}
             />
-            <span className={`${styles.brandName} text-gradient`}>Ui2v</span>
+            <span className={styles.brandName}>Ui2v</span>
           </div>
-          <span className={styles.divider}>/</span>
+          <span className={styles.divider}>·</span>
           <div className={styles.copyright}>
             © {currentYear} Ui2v. All rights reserved.
           </div>
@@ -33,10 +37,16 @@ export function Footer() {
 
         <div className={styles.rightSection}>
           {/* Social Links */}
-          <div style={{ display: 'flex', gap: '16px', marginRight: '24px' }}>
-            <a href="#" style={{ color: 'rgba(255,255,255,0.4)', transition: 'color 0.2s' }} onMouseEnter={e => e.currentTarget.style.color = '#fff'} onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,0.4)'}><FaTwitter size={14} /></a>
-            <a href="#" style={{ color: 'rgba(255,255,255,0.4)', transition: 'color 0.2s' }} onMouseEnter={e => e.currentTarget.style.color = '#5865F2'} onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,0.4)'}><FaDiscord size={14} /></a>
-            <a href="#" style={{ color: 'rgba(255,255,255,0.4)', transition: 'color 0.2s' }} onMouseEnter={e => e.currentTarget.style.color = '#fff'} onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,0.4)'}><FaGithub size={14} /></a>
+          <div className={styles.socialLinks}>
+            <a href="#" className={styles.socialLink} aria-label="Twitter">
+              <FaTwitter />
+            </a>
+            <a href="#" className={styles.socialLink} aria-label="Discord">
+              <FaDiscord />
+            </a>
+            <a href="#" className={styles.socialLink} aria-label="GitHub">
+              <FaGithub />
+            </a>
           </div>
 
           <div className={styles.platformInfo}>

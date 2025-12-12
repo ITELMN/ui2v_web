@@ -1,20 +1,34 @@
 .footer {
-  width: 100%;
-  padding: 24px 0;
-  margin-top: 60px;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
-  background: transparent;
   position: relative;
-  z-index: 1;
+  padding: 40px 24px;
+  background: linear-gradient(180deg, transparent 0%, rgba(139, 92, 246, 0.03) 100%);
+  overflow: hidden;
+}
+
+.topLine {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(139, 92, 246, 0.3) 20%,
+    rgba(6, 182, 212, 0.2) 50%,
+    rgba(139, 92, 246, 0.3) 80%,
+    transparent 100%
+  );
 }
 
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 24px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
+  position: relative;
+  z-index: 1;
 }
 
 .leftSection {
@@ -26,22 +40,29 @@
 .brand {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
 }
 
 .logo {
   opacity: 0.9;
+  transition: opacity 0.3s ease;
+}
+
+.brand:hover .logo {
+  opacity: 1;
 }
 
 .brandName {
-  font-size: 14px;
-  font-weight: 600;
-  color: rgba(255, 255, 255, 0.8);
-  letter-spacing: -0.01em;
+  font-size: 18px;
+  font-weight: 700;
+  background: linear-gradient(135deg, #fff 0%, #c084fc 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .divider {
-  color: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.2);
   font-size: 14px;
 }
 
@@ -53,6 +74,33 @@
 .rightSection {
   display: flex;
   align-items: center;
+  gap: 32px;
+}
+
+.socialLinks {
+  display: flex;
+  gap: 12px;
+}
+
+.socialLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 15px;
+  transition: all 0.3s ease;
+}
+
+.socialLink:hover {
+  background: rgba(139, 92, 246, 0.15);
+  border-color: rgba(139, 92, 246, 0.3);
+  color: #c084fc;
+  transform: translateY(-2px);
 }
 
 .platformInfo {
@@ -62,80 +110,63 @@
 }
 
 .platformLabel {
-  font-size: 11px;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.3);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.4);
 }
 
 .badges {
   display: flex;
-  align-items: center;
-  gap: 6px;
+  gap: 8px;
 }
 
 .badge {
+  padding: 6px 12px;
   font-size: 11px;
-  font-weight: 500;
-  padding: 2px 6px;
-  border-radius: 4px;
+  font-weight: 600;
+  border-radius: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .badge.active {
-  background: rgba(255, 255, 255, 0.05);
-  color: rgba(255, 255, 255, 0.7);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.2) 0%, rgba(139, 92, 246, 0.1) 100%);
+  border: 1px solid rgba(139, 92, 246, 0.3);
+  color: #c084fc;
 }
 
 .badge.coming {
-  color: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.35);
 }
 
+/* Responsive */
 @media (max-width: 768px) {
   .footer {
-    padding: 32px 0 24px;
-    margin-top: 40px;
+    padding: 32px 20px;
   }
-  
+
   .container {
     flex-direction: column;
-    gap: 20px;
-    align-items: flex-start;
-    padding: 0 20px;
+    gap: 24px;
   }
-  
+
   .leftSection {
     flex-direction: column;
-    align-items: flex-start;
     gap: 12px;
-    width: 100%;
   }
-  
+
   .divider {
     display: none;
   }
-  
-  .copyright {
-    font-size: 12px;
-  }
-  
+
   .rightSection {
-    width: 100%;
     flex-direction: column;
-    align-items: flex-start;
-    gap: 16px;
-    padding-top: 16px;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    gap: 20px;
   }
-  
-  .rightSection > div:first-child {
-    margin-right: 0;
-  }
-  
+
   .platformInfo {
     flex-direction: column;
-    align-items: flex-start;
     gap: 8px;
   }
 }

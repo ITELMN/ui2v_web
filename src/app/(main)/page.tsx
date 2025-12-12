@@ -1,14 +1,11 @@
 "use client";
 
-// Removed @once-ui-system/core imports - using native HTML elements
 import { useLanguage } from "@/contexts/LanguageContext";
-import { iconLibrary } from "@/resources/icons";
 import Image from "next/image";
 import { Footer } from "@/components/Footer";
 import HeroVersionBadge from "@/components/HeroVersionBadge";
-import styles from "./page.module.css";
-import { AiIcon, LocalIcon, EasyIcon, AiCardBg, LocalCardBg, EasyCardBg } from "@/components/FeatureIcons";
-import { LayersAnim, ProvidersAnim, DownloadGuideAnim, GlobalAmbientBg } from "@/components/AiVideoDecorations";
+import { AiCardBg, LocalCardBg, EasyCardBg } from "@/components/FeatureIcons";
+import { LayersAnim, ProvidersAnim, DownloadGuideAnim } from "@/components/AiVideoDecorations";
 import { 
   TimelineEditorAnim, 
   ModelHubAnim, 
@@ -22,6 +19,12 @@ import {
 import { ProcessFlowAnim } from "@/components/ProcessFlowAnim";
 import { AiLogicIcon, LocalLogicIcon, EasyLogicIcon } from "@/components/HeroFlowAnim";
 import RippleGrid from "@/components/RippleGrid";
+import TiltCard from "@/components/TiltCard";
+import { ScrollReveal, StaggerReveal } from "@/components/ScrollReveal";
+import CursorGlow from "@/components/CursorGlow";
+import { GlowingOrb, FloatingParticles } from "@/components/GlowingOrb";
+import TypeWriter from "@/components/TypeWriter";
+import styles from "./page.module.css";
 import { 
   FaDownload, 
   FaRobot, 
@@ -38,393 +41,366 @@ import {
   FaWindows,
   FaApple,
   FaShieldAlt,
-  FaCheckCircle
 } from "react-icons/fa";
 import { HiSparkles } from "react-icons/hi";
 
 export default function Home() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
+
+  const promptExamples = language === 'zh' 
+    ? ['创建一个粒子爆炸动画', '设计渐变文字标题', '制作数据可视化图表', '生成3D旋转Logo']
+    : ['Create particle explosion', 'Design gradient title', 'Make data visualization', 'Generate 3D rotating logo'];
 
   return (
-    <div className={`${styles.pageContainer} bg-dot-grid`}>
-      {/* RippleGrid Background */}
-      <div style={{ 
-        position: 'fixed', 
-        top: '50%', 
-        left: '50%', 
-        transform: 'translate(-50%, -50%)',
-        width: '1400px', 
-        height: '1400px', 
-        zIndex: 0, 
-        pointerEvents: 'none' 
-      }}>
-        <RippleGrid 
-          enableRainbow={false}
-          gridColor="#6366f1"
-          rippleIntensity={0.08}
-          gridSize={8.0}
-          gridThickness={12.0}
-          fadeDistance={1.2}
-          vignetteStrength={1.5}
-          glowIntensity={0.3}
-          opacity={0.6}
-          gridRotation={0}
-          mouseInteraction={true}
-          mouseInteractionRadius={1.5}
+    <div className={styles.pageContainer}>
+      {/* Global Cursor Glow */}
+      <CursorGlow color="rgba(139, 92, 246, 0.15)" size={500} blur={120} opacity={0.5} />
+      
+      {/* Background Elements */}
+      <div className={styles.backgroundLayer}>
+        {/* RippleGrid */}
+        <div className={styles.rippleContainer}>
+          <RippleGrid 
+            enableRainbow={false}
+            gridColor="#6366f1"
+            rippleIntensity={0.06}
+            gridSize={10.0}
+            gridThickness={15.0}
+            fadeDistance={1.4}
+            vignetteStrength={1.8}
+            glowIntensity={0.2}
+            opacity={0.5}
+            mouseInteraction={true}
+            mouseInteractionRadius={1.8}
+          />
+        </div>
+        
+        {/* Floating Orbs */}
+        <GlowingOrb 
+          className={styles.orb1} 
+          color="rgba(139, 92, 246, 0.3)" 
+          size={600} 
+          blur={150}
         />
+        <GlowingOrb 
+          className={styles.orb2} 
+          color="rgba(6, 182, 212, 0.2)" 
+          size={500} 
+          blur={120}
+        />
+        <GlowingOrb 
+          className={styles.orb3} 
+          color="rgba(139, 92, 246, 0.2)" 
+          size={400} 
+          blur={100}
+        />
+        
+        {/* Floating Particles */}
+        <FloatingParticles count={30} />
       </div>
-      {/* <GlobalAmbientBg /> */}
-      {/* Hero Section - 全新设计 */}
+
+      {/* ==================== HERO SECTION ==================== */}
       <section className={styles.heroSection}>
-        {/* <HeroFlowAnim /> */}
         <div className={styles.heroContent}>
-          {/* 左侧内容区 */}
+          {/* Left Content */}
           <div className={styles.heroText}>
-            <div className={styles.betaBadge}>
-              <span className={styles.badgeDot}></span>
-              {t("hero.badge")}
-            </div>
+            <ScrollReveal direction="down" delay={0} duration={800}>
+              <div className={styles.betaBadge}>
+                <span className={styles.badgeDot} />
+                <span>{t("hero.badge")}</span>
+                <HiSparkles className={styles.badgeIcon} />
+              </div>
+            </ScrollReveal>
 
-            <h1 className={`${styles.heroTitle} text-gradient`} style={{ position: 'relative', display: 'inline-block' }}>
-              {t("hero.title")}
-              <HiSparkles 
-                className="hero-decor-star"
-                style={{ 
-                  position: 'absolute', 
-                  top: '-20px', 
-                  right: '-24px', 
-                  color: '#FCD34D',
-                  zIndex: -1,
-                  opacity: 0.8,
-                  fontSize: '32px'
-                }}
-              />
-            </h1>
+            <ScrollReveal direction="up" delay={100} duration={800}>
+              <h1 className={styles.heroTitle}>
+                <span className="text-gradient">{t("hero.title")}</span>
+              </h1>
+            </ScrollReveal>
 
-            <p className={`${styles.heroSubtitle} text-shimmer`} style={{ position: 'relative' }}>
-              {t("hero.subtitle")}
-              <svg 
-                className="hero-decor-underline"
-                width="120" 
-                height="10" 
-                viewBox="0 0 120 10" 
-                fill="none" 
-                stroke="currentColor" 
-                strokeWidth="2"
-                style={{ 
-                  position: 'absolute', 
-                  bottom: '-10px', 
-                  left: '0', 
-                  color: 'var(--ui2v-accent)',
-                  opacity: 0.6 
-                }}
-              >
-                <path d="M0 5 Q 60 10 120 5" />
-              </svg>
-            </p>
+            <ScrollReveal direction="up" delay={200} duration={800}>
+              <p className={styles.heroSubtitle}>
+                <span className="text-shimmer">{t("hero.subtitle")}</span>
+              </p>
+            </ScrollReveal>
+
             
-            <p className={styles.heroDescription}>
-            {t("hero.description")}
-          </p>
+            
+            <ScrollReveal direction="up" delay={400} duration={800}>
+              <p className={styles.heroDescription}>
+                {t("hero.description")}
+              </p>
+            </ScrollReveal>
 
-            {/* CTA 按钮 */}
-            <div className={styles.heroActions} style={{ position: 'relative' }}>
-              <a 
-                href="https://new.ui2v.com/download" 
-                className={styles.btnPrimary}
-                data-umami-event="download-click"
-                data-umami-event-position="hero"
-              >
-                <span className={styles.btnIcon}><FaDownload /></span>
-              {t("hero.download")}
-            </a>
-            </div>
+            <ScrollReveal direction="up" delay={500} duration={800}>
+              <div className={styles.heroActions}>
+                <a 
+                  href="https://new.ui2v.com/download" 
+                  className={styles.btnPrimary}
+                  data-umami-event="download-click"
+                  data-umami-event-position="hero"
+                >
+                  <span className={styles.btnGlow} />
+                  <FaDownload className={styles.btnIcon} />
+                  <span>{t("hero.download")}</span>
+                </a>
+              </div>
+            </ScrollReveal>
 
-            {/* 平台信息 */}
-            <div className={styles.platformInfo}>
-              <div className={styles.platformItem}>
-                <FaWindows />
-                <span>{t("hero.platform")}</span>
+            <ScrollReveal direction="up" delay={600} duration={800}>
+              <div className={styles.platformInfo}>
+                <div className={styles.platformItem}>
+                  <FaWindows />
+                  <span>{t("hero.platform")}</span>
                 </div>
-              <div className={`${styles.platformItem} ${styles.macComing}`}>
-                <FaApple />
-                <span>{t("hero.mac_coming")}</span>
+                <div className={`${styles.platformItem} ${styles.macComing}`}>
+                  <FaApple />
+                  <span>{t("hero.mac_coming")}</span>
+                </div>
               </div>
-            </div>
+            </ScrollReveal>
 
-            {/* 特性标签 */}
-            <div className={styles.featureTags}>
-              <div className={styles.tag} style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                <FaHome style={{ fontSize: '0.9em', opacity: 0.8 }} />
-                {t("hero.local")}
+            <ScrollReveal direction="up" delay={700} duration={800}>
+              <div className={styles.featureTags}>
+                <div className={styles.tag}>
+                  <FaHome />
+                  <span>{t("hero.local")}</span>
+                </div>
+                <div className={styles.tag}>
+                  <FaShieldAlt />
+                  <span>{t("hero.privacy")}</span>
+                </div>
+                <div className={styles.tag}>
+                  <FaRobot />
+                  <span>{t("hero.ai")}</span>
+                </div>
               </div>
-              <div className={styles.tag} style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                <FaShieldAlt style={{ fontSize: '0.9em', opacity: 0.8 }} />
-                {t("hero.privacy")}
-              </div>
-              <div className={styles.tag} style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                <FaRobot style={{ fontSize: '0.9em', opacity: 0.8 }} />
-                {t("hero.ai")}
-              </div>
-            </div>
+            </ScrollReveal>
           </div>
 
-          {/* 右侧预览图 */}
-          <div className={styles.heroPreview}>
-            <div className={styles.previewCard} style={{ position: 'relative' }}>
-            <Image
-              src="/images/preview1.png"
-                alt="Ui2v 界面预览"
-              width={1200}
-              height={675}
-              priority
+          {/* Right Preview */}
+          <ScrollReveal direction="scale" delay={300} duration={1000} className={styles.heroPreview}>
+            <TiltCard 
+              className={styles.previewCard}
+              tiltIntensity={6}
+              glowIntensity={0.3}
+              glowColor="rgba(139, 92, 246, 0.5)"
+            >
+              <Image
+                src="/images/preview1.png"
+                alt="Ui2v Interface Preview"
+                width={1200}
+                height={675}
+                priority
                 className={styles.previewImage}
                 placeholder="blur"
                 blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mM0dSn/DwACwQHLqwH3TwAAAABJRU5ErkJggg=="
-            />
-              <div className={styles.previewGlow}></div>
-          </div>
-            {/* 版本信息徽章 - 移动到图片下方 */}
-            <div style={{ marginTop: '24px', display: 'flex', justifyContent: 'center' }}>
+              />
+              <div className={styles.previewOverlay} />
+            </TiltCard>
+            {/* <ScrollReveal direction="up" delay={300} duration={800}>
+              <div className={styles.promptDemo}>
+                <span className={styles.promptLabel}>AI Prompt:</span>
+                <TypeWriter 
+                  texts={promptExamples}
+                  className={styles.promptText}
+                  typingSpeed={60}
+                  deletingSpeed={30}
+                  pauseDuration={2500}
+                />
+              </div>
+            </ScrollReveal> */}
+            <div className={styles.versionBadgeWrapper}>
               <HeroVersionBadge />
             </div>
-          </div>
+          </ScrollReveal>
         </div>
       </section>
 
-      {/* 核心特性 - 精简版 */}
-      <section className={styles.featuresSection} style={{ position: 'relative' }}>
-        {/* Process Flow Animation */}
-        <div style={{ marginBottom: '80px' }}>
+      {/* ==================== PROCESS FLOW ==================== */}
+      <section className={styles.processSection}>
+        <ScrollReveal direction="up" duration={800}>
           <ProcessFlowAnim />
-        </div>
+        </ScrollReveal>
+      </section>
 
-        <div className={styles.sectionHeader} style={{ position: 'relative', zIndex: 1 }}>
-          <h2 className={styles.sectionTitle}>
-              {t("features.title")}
+      {/* ==================== FEATURES SECTION ==================== */}
+      <section className={styles.featuresSection}>
+        <ScrollReveal direction="up" duration={800}>
+          <div className={styles.sectionHeader}>
+            <h2 className={styles.sectionTitle}>
+              <span className="text-gradient">{t("features.title")}</span>
             </h2>
-          <p className={styles.sectionSubtitle}>
-            {t("features.subtitle")}
-          </p>
-        </div>
+            <p className={styles.sectionSubtitle}>{t("features.subtitle")}</p>
+          </div>
+        </ScrollReveal>
 
         <div className={styles.featuresGrid}>
-          <div className={`${styles.featureCard} card-hover-effect`}>
-            <AiCardBg />
-            <div className={`${styles.featureIcon} ${styles.aiIcon} animate-float`}>
-              <AiLogicIcon className="w-full h-full" />
-            </div>
-            <h3 className={`${styles.featureTitle} text-gradient`}>
-              {t("features.ai.title")}
-            </h3>
-            <p className={styles.featureDesc}>
-              {t("features.ai.desc")}
-            </p>
-          </div>
+          <ScrollReveal direction="up" delay={0} duration={700}>
+            <TiltCard className={styles.featureCard} tiltIntensity={5} glowIntensity={0.2}>
+              <AiCardBg />
+              <div className={`${styles.featureIcon} ${styles.aiIcon}`}>
+                <AiLogicIcon className="w-full h-full" />
+              </div>
+              <h3 className={styles.featureTitle}>
+                <span className="text-gradient-primary">{t("features.ai.title")}</span>
+              </h3>
+              <p className={styles.featureDesc}>{t("features.ai.desc")}</p>
+            </TiltCard>
+          </ScrollReveal>
 
-          <div className={`${styles.featureCard} card-hover-effect`}>
-            <LocalCardBg />
-            <div className={`${styles.featureIcon} ${styles.localIcon} animate-float`}>
-              <LocalLogicIcon className="w-full h-full" />
-            </div>
-            <h3 className={`${styles.featureTitle} text-gradient`}>
-              {t("features.local.title")}
-            </h3>
-            <p className={styles.featureDesc}>
-              {t("features.local.desc")}
-            </p>
-          </div>
+          <ScrollReveal direction="up" delay={100} duration={700}>
+            <TiltCard className={styles.featureCard} tiltIntensity={5} glowIntensity={0.2}>
+              <LocalCardBg />
+              <div className={`${styles.featureIcon} ${styles.localIcon}`}>
+                <LocalLogicIcon className="w-full h-full" />
+              </div>
+              <h3 className={styles.featureTitle}>
+                <span className="text-gradient-primary">{t("features.local.title")}</span>
+              </h3>
+              <p className={styles.featureDesc}>{t("features.local.desc")}</p>
+            </TiltCard>
+          </ScrollReveal>
 
-          <div className={`${styles.featureCard} card-hover-effect`}>
-            <EasyCardBg />
-            <div className={`${styles.featureIcon} ${styles.easyIcon} animate-float`}>
-              <EasyLogicIcon className="w-full h-full" />
-            </div>
-            <h3 className={`${styles.featureTitle} text-gradient`}>
-              {t("features.easy.title")}
-            </h3>
-            <p className={styles.featureDesc}>
-              {t("features.easy.desc")}
-            </p>
-          </div>
+          <ScrollReveal direction="up" delay={200} duration={700}>
+            <TiltCard className={styles.featureCard} tiltIntensity={5} glowIntensity={0.2}>
+              <EasyCardBg />
+              <div className={`${styles.featureIcon} ${styles.easyIcon}`}>
+                <EasyLogicIcon className="w-full h-full" />
+              </div>
+              <h3 className={styles.featureTitle}>
+                <span className="text-gradient-primary">{t("features.easy.title")}</span>
+              </h3>
+              <p className={styles.featureDesc}>{t("features.easy.desc")}</p>
+            </TiltCard>
+          </ScrollReveal>
         </div>
       </section>
 
-      {/* 功能亮点 - 网格展示 */}
-      <section className={styles.capabilitiesSection} style={{ position: 'relative', overflow: 'hidden' }}>
-        <div className={styles.sectionHeader} style={{ position: 'relative', zIndex: 1 }}>
-          <h2 className={styles.sectionTitle}>
-            {t("capabilities.title")}
+      {/* ==================== CAPABILITIES SECTION ==================== */}
+      <section className={styles.capabilitiesSection}>
+        <ScrollReveal direction="up" duration={800}>
+          <div className={styles.sectionHeader}>
+            <h2 className={styles.sectionTitle}>
+              <span className="text-gradient">{t("capabilities.title")}</span>
             </h2>
-          <p className={styles.sectionSubtitle}>
-            {t("capabilities.subtitle")}
-            </p>
-        </div>
-
-        <div className={styles.capabilitiesGrid} style={{ position: 'relative', zIndex: 1 }}>
-          <div className={`${styles.capabilityItem} card-hover-effect`} style={{ position: 'relative', overflow: 'hidden' }}>
-            <div style={{ position: 'absolute', bottom: 0, right: 0, width: '140px', height: '70px', opacity: 0.3, pointerEvents: 'none' }}>
-              <LayersAnim />
-            </div>
-            <div className={styles.capabilityIcon} style={{ position: 'relative', zIndex: 1 }}><FaChartBar /></div>
-            <div className={styles.capabilityText} style={{ position: 'relative', zIndex: 1 }}>
-              <strong className="text-gradient-primary">{t("capabilities.layers")}</strong>
-              <span>{t("capabilities.layers.desc")}</span>
-            </div>
+            <p className={styles.sectionSubtitle}>{t("capabilities.subtitle")}</p>
           </div>
+        </ScrollReveal>
 
-          <div className={`${styles.capabilityItem} card-hover-effect`} style={{ position: 'relative', overflow: 'hidden' }}>
-            <div style={{ position: 'absolute', bottom: 0, right: 0, width: '160px', height: '60px', opacity: 0.4, pointerEvents: 'none' }}>
-              <TimelineEditorAnim />
-            </div>
-            <div className={styles.capabilityIcon} style={{ position: 'relative', zIndex: 1 }}><FaClock /></div>
-            <div className={styles.capabilityText} style={{ position: 'relative', zIndex: 1 }}>
-              <strong className="text-gradient-primary">{t("capabilities.timeline")}</strong>
-              <span>{t("capabilities.timeline.desc")}</span>
-            </div>
-          </div>
-
-          <div className={`${styles.capabilityItem} card-hover-effect`} style={{ position: 'relative', overflow: 'hidden' }}>
-            <div style={{ position: 'absolute', top: 0, right: 0, width: '100%', height: '100%', opacity: 0.2, pointerEvents: 'none' }}>
-              <DiffusionGridAnim />
-            </div>
-            <div className={styles.capabilityIcon} style={{ position: 'relative', zIndex: 1 }}><HiSparkles /></div>
-            <div className={styles.capabilityText} style={{ position: 'relative', zIndex: 1 }}>
-              <strong className="text-gradient-primary">{t("capabilities.ai")}</strong>
-              <span>{t("capabilities.ai.desc")}</span>
-            </div>
-          </div>
-
-          <div className={`${styles.capabilityItem} card-hover-effect`} style={{ position: 'relative', overflow: 'hidden' }}>
-            <div style={{ position: 'absolute', bottom: 0, right: 0, width: '140px', height: '60px', opacity: 0.3, pointerEvents: 'none' }}>
-               <RenderingAnim />
-            </div>
-            <div className={styles.capabilityIcon} style={{ position: 'relative', zIndex: 1 }}><FaSave /></div>
-            <div className={styles.capabilityText} style={{ position: 'relative', zIndex: 1 }}>
-              <strong className="text-gradient-primary">{t("capabilities.export")}</strong>
-              <span>{t("capabilities.export.desc")}</span>
-            </div>
-          </div>
-
-          <div className={`${styles.capabilityItem} card-hover-effect`} style={{ position: 'relative', overflow: 'hidden' }}>
-            <div style={{ position: 'absolute', bottom: '-20px', right: '-20px', width: '140px', height: '140px', opacity: 0.15, pointerEvents: 'none' }}>
-              <ModelHubAnim />
-            </div>
-            <div className={styles.capabilityIcon} style={{ position: 'relative', zIndex: 1 }}><FaPalette /></div>
-            <div className={styles.capabilityText} style={{ position: 'relative', zIndex: 1 }}>
-              <strong className="text-gradient-primary">{t("capabilities.engines")}</strong>
-              <span>{t("capabilities.engines.desc")}</span>
-            </div>
-          </div>
-
-          <div className={`${styles.capabilityItem} card-hover-effect`} style={{ position: 'relative', overflow: 'hidden' }}>
-            <div style={{ position: 'absolute', top: '10px', right: '10px', width: '100px', height: '50px', opacity: 0.3, pointerEvents: 'none' }}>
-              <ProvidersAnim />
-            </div>
-            <div className={styles.capabilityIcon} style={{ position: 'relative', zIndex: 1 }}><FaPlug /></div>
-            <div className={styles.capabilityText} style={{ position: 'relative', zIndex: 1 }}>
-              <strong className="text-gradient-primary">{t("capabilities.providers")}</strong>
-              <span>{t("capabilities.providers.desc")}</span>
-            </div>
-          </div>
+        <div className={styles.capabilitiesGrid}>
+          {[
+            { icon: FaChartBar, key: 'layers', Anim: LayersAnim },
+            { icon: FaClock, key: 'timeline', Anim: TimelineEditorAnim },
+            { icon: HiSparkles, key: 'ai', Anim: DiffusionGridAnim },
+            { icon: FaSave, key: 'export', Anim: RenderingAnim },
+            { icon: FaPalette, key: 'engines', Anim: ModelHubAnim },
+            { icon: FaPlug, key: 'providers', Anim: ProvidersAnim },
+          ].map((item, index) => (
+            <ScrollReveal key={item.key} direction="up" delay={index * 80} duration={600}>
+              <TiltCard className={styles.capabilityItem} tiltIntensity={4} glowIntensity={0.15}>
+                <div className={styles.capabilityAnim}>
+                  <item.Anim />
+                </div>
+                <div className={styles.capabilityIcon}>
+                  <item.icon />
+                </div>
+                <div className={styles.capabilityText}>
+                  <strong className="text-gradient-primary">{t(`capabilities.${item.key}`)}</strong>
+                  <span>{t(`capabilities.${item.key}.desc`)}</span>
+                </div>
+              </TiltCard>
+            </ScrollReveal>
+          ))}
         </div>
       </section>
 
-      {/* 适用场景 */}
-      <section className={styles.usecasesSection} style={{ position: 'relative', overflow: 'hidden' }}>
-        <h2 className={`${styles.sectionTitle} text-gradient`} style={{ position: 'relative', zIndex: 1 }}>
-          {t("usecases.title")}
+      {/* ==================== USE CASES SECTION ==================== */}
+      <section className={styles.usecasesSection}>
+        <ScrollReveal direction="up" duration={800}>
+          <h2 className={styles.sectionTitle}>
+            <span className="text-gradient">{t("usecases.title")}</span>
           </h2>
+        </ScrollReveal>
         
-        <div className={styles.usecasesGrid} style={{ position: 'relative', zIndex: 1 }}>
-          <div className={`${styles.usecaseCard} card-hover-effect`} style={{ position: 'relative', overflow: 'hidden' }}>
-            <SmartTrackingAnim style={{ position: 'absolute', top: 0, left: 0, opacity: 0.1, pointerEvents: 'none' }} />
-            <div className={`${styles.usecaseIcon} animate-float`}><FaVideo /></div>
-            <strong className="text-gradient-primary">{t("usecases.creator")}</strong>
-            <span>{t("usecases.creator.desc")}</span>
-        </div>
-
-          <div className={`${styles.usecaseCard} card-hover-effect`} style={{ position: 'relative', overflow: 'hidden' }}>
-            <DesignerAnim style={{ position: 'absolute', top: 0, left: 0, opacity: 0.15, pointerEvents: 'none' }} />
-            <div className={`${styles.usecaseIcon} animate-float`}><FaPalette /></div>
-            <strong className="text-gradient-primary">{t("usecases.designer")}</strong>
-            <span>{t("usecases.designer.desc")}</span>
-        </div>
-
-          <div className={`${styles.usecaseCard} card-hover-effect`} style={{ position: 'relative', overflow: 'hidden' }}>
-            <MarketerAnim style={{ position: 'absolute', top: 0, left: 0, opacity: 0.15, pointerEvents: 'none' }} />
-            <div className={`${styles.usecaseIcon} animate-float`}><FaChartLine /></div>
-            <strong className="text-gradient-primary">{t("usecases.marketer")}</strong>
-            <span>{t("usecases.marketer.desc")}</span>
-          </div>
-
-          <div className={`${styles.usecaseCard} card-hover-effect`} style={{ position: 'relative', overflow: 'hidden' }}>
-            <EducatorAnim style={{ position: 'absolute', top: 0, left: 0, opacity: 0.15, pointerEvents: 'none' }} />
-            <div className={`${styles.usecaseIcon} animate-float`}><FaBook /></div>
-            <strong className="text-gradient-primary">{t("usecases.educator")}</strong>
-            <span>{t("usecases.educator.desc")}</span>
-          </div>
+        <div className={styles.usecasesGrid}>
+          {[
+            { icon: FaVideo, key: 'creator', Anim: SmartTrackingAnim },
+            { icon: FaPalette, key: 'designer', Anim: DesignerAnim },
+            { icon: FaChartLine, key: 'marketer', Anim: MarketerAnim },
+            { icon: FaBook, key: 'educator', Anim: EducatorAnim },
+          ].map((item, index) => (
+            <ScrollReveal key={item.key} direction="up" delay={index * 100} duration={700}>
+              <TiltCard className={styles.usecaseCard} tiltIntensity={5} glowIntensity={0.2}>
+                <div className={styles.usecaseAnim}>
+                  <item.Anim />
+                </div>
+                <div className={styles.usecaseIcon}>
+                  <item.icon />
+                </div>
+                <strong className="text-gradient-primary">{t(`usecases.${item.key}`)}</strong>
+                <span>{t(`usecases.${item.key}.desc`)}</span>
+              </TiltCard>
+            </ScrollReveal>
+          ))}
         </div>
       </section>
 
-      {/* CTA Section - 全新设计 */}
-      <section className={styles.ctaSection} style={{ position: 'relative', overflow: 'hidden' }}>
-
-        <div style={{ position: 'absolute', bottom: 0, left: '50%', transform: 'translateX(-50%)', width: '100%', height: '100%', opacity: 0.3, pointerEvents: 'none' }}>
+      {/* ==================== CTA SECTION ==================== */}
+      <section className={styles.ctaSection}>
+        <div className={styles.ctaBackground}>
           <DownloadGuideAnim />
         </div>
-        <div className={styles.ctaContainer}>
-          <div className={styles.ctaMain}>
-            <h2 className={`${styles.ctaTitle} text-shimmer`}>
-            {t("cta.title")}
-        </h2>
+        
+        <ScrollReveal direction="scale" duration={800}>
+          <div className={styles.ctaContainer}>
+            <div className={styles.ctaMain}>
+              <h2 className={styles.ctaTitle}>
+                <span className="text-shimmer">{t("cta.title")}</span>
+              </h2>
 
-            <a 
-              href="https://new.ui2v.com/download" 
-              className={styles.ctaDownloadBtn}
-              data-umami-event="download-click"
-              data-umami-event-position="cta"
-            >
-              <span className={styles.downloadIcon}><FaDownload /></span>
-              <div className={styles.downloadText}>
-                <span className={styles.downloadLabel}>{t("cta.download")}</span>
-                <span className={styles.downloadSize}>{t("cta.size")}</span>
-              </div>
-            </a>
+              <a 
+                href="https://new.ui2v.com/download" 
+                className={styles.ctaDownloadBtn}
+                data-umami-event="download-click"
+                data-umami-event-position="cta"
+              >
+                <span className={styles.ctaBtnGlow} />
+                <FaDownload className={styles.downloadIcon} />
+                <div className={styles.downloadText}>
+                  <span className={styles.downloadLabel}>{t("cta.download")}</span>
+                  <span className={styles.downloadSize}>{t("cta.size")}</span>
+                </div>
+              </a>
 
-            <div className={styles.ctaDetails}>
-              <div className={styles.ctaDetailItem}>
+              <div className={styles.ctaDetails}>
                 <span>{t("cta.requirement")}</span>
               </div>
+
+              <div className={styles.ctaMacNotice}>
+                {t("cta.mac")}
+              </div>
             </div>
 
-            <div className={styles.ctaMacNotice}>
-              {t("cta.mac")}
+            <div className={styles.ctaFeatures}>
+              {[
+                { icon: FaHome, key: 'local' },
+                { icon: FaBolt, key: 'fast' },
+                { icon: FaRobot, key: 'ai' },
+                { icon: HiSparkles, key: 'easy' },
+              ].map((item) => (
+                <div key={item.key} className={styles.ctaFeatureItem}>
+                  <div className={styles.ctaFeatureIcon}>
+                    <item.icon />
+                  </div>
+                  <span>{t(`cta.features.${item.key}`)}</span>
+                </div>
+              ))}
             </div>
           </div>
-
-          <div className={styles.ctaFeatures}>
-            <div className={styles.ctaFeatureItem}>
-              <div className={styles.ctaFeatureIcon}><FaHome /></div>
-              <span>{t("cta.features.local")}</span>
-            </div>
-            <div className={styles.ctaFeatureItem}>
-              <div className={styles.ctaFeatureIcon}><FaBolt /></div>
-              <span>{t("cta.features.fast")}</span>
-            </div>
-            <div className={styles.ctaFeatureItem}>
-              <div className={styles.ctaFeatureIcon}><FaRobot /></div>
-              <span>{t("cta.features.ai")}</span>
-            </div>
-            <div className={styles.ctaFeatureItem}>
-              <div className={styles.ctaFeatureIcon}><HiSparkles /></div>
-              <span>{t("cta.features.easy")}</span>
-            </div>
-          </div>
-        </div>
+        </ScrollReveal>
       </section>
 
-      {/* Footer */}
       <Footer />
     </div>
   );
