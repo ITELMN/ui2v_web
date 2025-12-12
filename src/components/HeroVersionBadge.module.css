@@ -5,7 +5,7 @@
   padding: 8px 0 12px;
   width: 100%;
   min-height: 104px;
-  z-index: 1;
+  z-index: auto;
 }
 
 .badgeGlow {
@@ -43,7 +43,7 @@
 }
 
 .heroVersionBadge:hover {
-  z-index: 10;
+  z-index: auto;
 }
 
 .heroVersionBadge:hover .badgeContent {

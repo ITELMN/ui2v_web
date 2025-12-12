@@ -12,6 +12,10 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+  /* Mobile optimization */
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 @layer utilities {
@@ -232,4 +236,43 @@ html {
 ::selection {
   background-color: rgba(168, 85, 247, 0.3);
   color: white;
+}
+
+/* Mobile-specific optimizations */
+@media (max-width: 768px) {
+  /* Improve touch targets */
+  button,
+  a {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Better tap highlight */
+  * {
+    -webkit-tap-highlight-color: rgba(139, 92, 246, 0.2);
+  }
+  
+  /* Prevent text inflation on mobile */
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+  
+  /* Smooth momentum scrolling */
+  body {
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /* Optimize font rendering on mobile */
+  body {
+    text-rendering: optimizeLegibility;
+  }
+}
+
+/* Landscape mobile optimization */
+@media (max-width: 768px) and (orientation: landscape) {
+  /* Reduce vertical spacing in landscape */
+  section {
+    padding-top: 60px !important;
+    padding-bottom: 60px !important;
+  }
 }
