@@ -53,7 +53,14 @@ export const FloatingParticles: React.FC<FloatingParticlesProps> = ({
   count = 20,
   className,
 }) => {
+  const [mounted, setMounted] = React.useState(false);
+  
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
+
   const particles = React.useMemo(() => {
+    if (!mounted) return [];
     return Array.from({ length: count }, (_, i) => ({
       id: i,
       left: `${Math.random() * 100}%`,
@@ -63,7 +70,11 @@ export const FloatingParticles: React.FC<FloatingParticlesProps> = ({
       delay: Math.random() * 5,
       opacity: Math.random() * 0.5 + 0.2,
     }));
-  }, [count]);
+  }, [count, mounted]);
+
+  if (!mounted) {
+    return null;
+  }
 
   return (
     <div className={cn('absolute inset-0 overflow-hidden pointer-events-none', className)}>

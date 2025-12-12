@@ -6,9 +6,63 @@
   position: relative;
 }
 
+.backgroundLayer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.rippleContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.orb1 {
+  position: absolute;
+  top: -10%;
+  left: -5%;
+  animation: float 20s ease-in-out infinite;
+}
+
+.orb2 {
+  position: absolute;
+  top: 40%;
+  right: -10%;
+  animation: float 25s ease-in-out infinite reverse;
+}
+
+.orb3 {
+  position: absolute;
+  bottom: -5%;
+  left: 30%;
+  animation: float 30s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  33% {
+    transform: translate(30px, -30px);
+  }
+  66% {
+    transform: translate(-20px, 20px);
+  }
+}
+
 .faqBackNav {
   max-width: 1200px;
   margin: 0 auto 32px;
+  position: relative;
+  z-index: 1;
 }
 
 .backButton {
@@ -46,6 +100,8 @@
   max-width: 1200px;
   margin: 0 auto 80px;
   text-align: center;
+  position: relative;
+  z-index: 1;
 }
 
 .faqMainTitle {
@@ -66,6 +122,8 @@
 .faqContent {
   max-width: 1200px;
   margin: 0 auto;
+  position: relative;
+  z-index: 1;
 }
 
 .faqCategory {

@@ -225,7 +225,7 @@ export default function Home() {
       </section>
 
       {/* ==================== FEATURES SECTION ==================== */}
-      <section className={styles.featuresSection}>
+      <section id="features" className={styles.featuresSection}>
         <ScrollReveal direction="up" duration={800}>
           <div className={styles.sectionHeader}>
             <h2 className={styles.sectionTitle}>
@@ -278,7 +278,7 @@ export default function Home() {
       </section>
 
       {/* ==================== CAPABILITIES SECTION ==================== */}
-      <section className={styles.capabilitiesSection}>
+      <section id="capabilities" className={styles.capabilitiesSection}>
         <ScrollReveal direction="up" duration={800}>
           <div className={styles.sectionHeader}>
             <h2 className={styles.sectionTitle}>

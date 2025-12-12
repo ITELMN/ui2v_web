@@ -380,16 +380,22 @@
 .aiIcon {
   background: linear-gradient(135deg, rgba(139, 92, 246, 0.2) 0%, rgba(109, 40, 217, 0.2) 100%);
   box-shadow: 0 0 40px rgba(139, 92, 246, 0.2);
+  color: #a78bfa;
+  font-size: 40px;
 }
 
 .localIcon {
   background: linear-gradient(135deg, rgba(16, 185, 129, 0.2) 0%, rgba(5, 150, 105, 0.2) 100%);
   box-shadow: 0 0 40px rgba(16, 185, 129, 0.2);
+  color: #34d399;
+  font-size: 40px;
 }
 
 .easyIcon {
   background: linear-gradient(135deg, rgba(245, 158, 11, 0.2) 0%, rgba(217, 119, 6, 0.2) 100%);
   box-shadow: 0 0 40px rgba(245, 158, 11, 0.2);
+  color: #fbbf24;
+  font-size: 40px;
 }
 
 .featureTitle {

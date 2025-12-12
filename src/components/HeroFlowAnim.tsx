@@ -143,52 +143,26 @@ export const HeroFlowAnim = ({ className, style }: { className?: string, style?:
   );
 };
 
+import { HiSparkles } from "react-icons/hi";
+import { FaShieldAlt } from "react-icons/fa";
+import { MdTouchApp } from "react-icons/md";
+
 /**
  * Feature Logic Icon
- * A set of clean, high-end animated icons for the features section.
+ * A set of clean, high-end animated icons for the features section using React Icons.
  */
 
-// 1. Local AI - Privacy & Speed
-export const LocalLogicIcon = ({ className }: { className?: string }) => (
-  <svg viewBox="0 0 64 64" className={className} fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M32 56s-20-10-20-30V14l20-8 20 8v12" strokeOpacity="0.2" />
-    <path d="M32 8v48" strokeDasharray="4 4" strokeOpacity="0.5" />
-    <rect x="22" y="22" width="20" height="20" rx="4" stroke="currentColor">
-       <animate attributeName="opacity" values="0.5;1;0.5" dur="3s" repeatCount="indefinite" />
-    </rect>
-    <circle cx="32" cy="32" r="4" fill="currentColor">
-       <animate attributeName="r" values="3;5;3" dur="2s" repeatCount="indefinite" />
-    </circle>
-  </svg>
-);
-
-// 2. AI Magic - Brain/Spark
+// 1. AI Magic - Sparkles
 export const AiLogicIcon = ({ className }: { className?: string }) => (
-  <svg viewBox="0 0 64 64" className={className} fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M32 12v4" />
-    <path d="M32 48v4" />
-    <path d="M14 32h4" />
-    <path d="M46 32h4" />
-    <circle cx="32" cy="32" r="12" stroke="currentColor" strokeOpacity="0.8" />
-    <path d="M32 20c6.6 0 12 5.4 12 12s-5.4 12-12 12-12-5.4-12-12 5.4-12 12-12z" strokeOpacity="0.3">
-      <animate attributeName="d" values="M32 20c6.6 0 12 5.4 12 12s-5.4 12-12 12-12-5.4-12-12 5.4-12 12-12z; M32 18c7.7 0 14 6.3 14 14s-6.3 14-14 14-14-6.3-14-14 6.3-14 14-14z; M32 20c6.6 0 12 5.4 12 12s-5.4 12-12 12-12-5.4-12-12 5.4-12 12-12z" dur="3s" repeatCount="indefinite" />
-    </path>
-    <path d="M48 16l-4 4" opacity="0.5" />
-    <path d="M16 16l4 4" opacity="0.5" />
-    <path d="M48 48l-4-4" opacity="0.5" />
-    <path d="M16 48l4-4" opacity="0.5" />
-  </svg>
+  <HiSparkles className={className} />
 );
 
-// 3. Easy Use - Hand/Touch
+// 2. Local AI - Privacy & Security
+export const LocalLogicIcon = ({ className }: { className?: string }) => (
+  <FaShieldAlt className={className} />
+);
+
+// 3. Easy Use - Touch/Tap
 export const EasyLogicIcon = ({ className }: { className?: string }) => (
-  <svg viewBox="0 0 64 64" className={className} fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-     <rect x="16" y="12" width="32" height="40" rx="4" strokeOpacity="0.5" />
-     <path d="M32 42l8-8-8-8" stroke="currentColor">
-        <animate attributeName="d" values="M30 42l8-8-8-8; M34 42l8-8-8-8; M30 42l8-8-8-8" dur="2s" repeatCount="indefinite" />
-     </path>
-     <line x1="24" y1="34" x2="40" y2="34" stroke="currentColor">
-        <animate attributeName="x2" values="38;42;38" dur="2s" repeatCount="indefinite" />
-     </line>
-  </svg>
+  <MdTouchApp className={className} />
 );

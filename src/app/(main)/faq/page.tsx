@@ -1,25 +1,19 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import styles from "./page.module.css";
 import { HiLightBulb } from "react-icons/hi";
 import { FaBolt, FaWrench, FaComments } from "react-icons/fa";
+import CursorGlow from "@/components/CursorGlow";
+import { GlowingOrb, FloatingParticles } from "@/components/GlowingOrb";
+import RippleGrid from "@/components/RippleGrid";
 
 export const dynamic = 'force-dynamic';
 
 export default function FAQPage() {
   const { t } = useLanguage();
   const [openIndex, setOpenIndex] = useState<number>(0);
-  const [mounted, setMounted] = useState(false);
-  
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-  
-  if (!mounted) {
-    return <div>Loading...</div>;
-  }
 
   const faqCategories = [
     {
@@ -64,6 +58,52 @@ export default function FAQPage() {
 
   return (
     <div className={styles.faqContainer}>
+      {/* Global Cursor Glow */}
+      <CursorGlow color="rgba(139, 92, 246, 0.15)" size={500} blur={120} opacity={0.5} />
+      
+      {/* Background Elements */}
+      <div className={styles.backgroundLayer}>
+        {/* RippleGrid */}
+        <div className={styles.rippleContainer}>
+          <RippleGrid 
+            enableRainbow={false}
+            gridColor="#6366f1"
+            rippleIntensity={0.06}
+            gridSize={10.0}
+            gridThickness={15.0}
+            fadeDistance={1.4}
+            vignetteStrength={1.8}
+            glowIntensity={0.2}
+            opacity={0.5}
+            mouseInteraction={true}
+            mouseInteractionRadius={1.8}
+          />
+        </div>
+        
+        {/* Floating Orbs */}
+        <GlowingOrb 
+          className={styles.orb1} 
+          color="rgba(139, 92, 246, 0.3)" 
+          size={600} 
+          blur={150}
+        />
+        <GlowingOrb 
+          className={styles.orb2} 
+          color="rgba(6, 182, 212, 0.2)" 
+          size={500} 
+          blur={120}
+        />
+        <GlowingOrb 
+          className={styles.orb3} 
+          color="rgba(139, 92, 246, 0.2)" 
+          size={400} 
+          blur={100}
+        />
+        
+        {/* Floating Particles */}
+        <FloatingParticles count={30} />
+      </div>
+
       <div className={styles.faqBackNav}>
         <a href="/" className={styles.backButton}>
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">

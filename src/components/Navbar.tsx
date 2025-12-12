@@ -78,25 +78,60 @@ export function Navbar() {
             </span>
           </a>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex gap-3 items-center">
+          {/* Center Navigation Links */}
+          <div className="hidden md:flex gap-8 items-center absolute left-1/2 -translate-x-1/2">
+            <a
+              href="/#features"
+              className={cn(
+                "text-[15px] font-medium",
+                "text-white/70 no-underline transition-all duration-300",
+                "hover:text-white relative",
+                "after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px]",
+                "after:bg-gradient-to-r after:from-primary-400 after:to-primary-600",
+                "after:transition-all after:duration-300",
+                "hover:after:w-full"
+              )}
+            >
+              {language === "zh" ? "优势" : "Features"}
+            </a>
+
+            <a
+              href="/#capabilities"
+              className={cn(
+                "text-[15px] font-medium",
+                "text-white/70 no-underline transition-all duration-300",
+                "hover:text-white relative",
+                "after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px]",
+                "after:bg-gradient-to-r after:from-primary-400 after:to-primary-600",
+                "after:transition-all after:duration-300",
+                "hover:after:w-full"
+              )}
+            >
+              {language === "zh" ? "功能" : "Capabilities"}
+            </a>
+
             <a
               href="/faq"
-              onClick={(e) => handleSmoothScroll(e, "/faq")}
               className={cn(
-                "px-5 py-2.5 text-[15px] font-semibold",
-                "text-white/85 bg-white/5 border border-primary-500/20 rounded-lg",
-                "no-underline transition-all duration-300 backdrop-blur-md",
-                "hover:bg-primary-500/15 hover:border-primary-500/40 hover:text-white"
+                "text-[15px] font-medium",
+                "text-white/70 no-underline transition-all duration-300",
+                "hover:text-white relative",
+                "after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px]",
+                "after:bg-gradient-to-r after:from-primary-400 after:to-primary-600",
+                "after:transition-all after:duration-300",
+                "hover:after:w-full"
               )}
             >
               FAQ
             </a>
+          </div>
 
+          {/* Right Side Actions */}
+          <div className="hidden md:flex gap-3 items-center">
             <a
               href="https://new.ui2v.com/download"
               className={cn(
-                "px-7 py-2.5 text-[15px] font-bold text-white",
+                "px-6 py-2 text-[15px] font-semibold text-white",
                 "bg-gradient-to-r from-primary-400 to-primary-600 rounded-lg",
                 "no-underline transition-all duration-300",
                 "shadow-[0_4px_16px_rgba(192,132,252,0.4)]",
@@ -131,27 +166,49 @@ export function Navbar() {
           className={cn(
             "md:hidden overflow-hidden transition-all duration-300 ease-in-out",
             "bg-neutral-950/95 backdrop-blur-xl border-t border-white/5",
-            isMobileMenuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+            isMobileMenuOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"
           )}
         >
-          <div className="px-6 py-4 flex flex-col gap-3">
+          <div className="px-6 py-4 flex flex-col gap-4">
+            <a
+              href="/#features"
+              className={cn(
+                "py-2 text-[15px] font-medium text-center",
+                "text-white/70 no-underline transition-all duration-300",
+                "hover:text-white"
+              )}
+            >
+              {language === "zh" ? "优势" : "Features"}
+            </a>
+
+            <a
+              href="/#capabilities"
+              className={cn(
+                "py-2 text-[15px] font-medium text-center",
+                "text-white/70 no-underline transition-all duration-300",
+                "hover:text-white"
+              )}
+            >
+              {language === "zh" ? "功能" : "Capabilities"}
+            </a>
+
             <a
               href="/faq"
-              onClick={(e) => handleSmoothScroll(e, "/faq")}
               className={cn(
-                "px-5 py-3 text-[15px] font-semibold text-center",
-                "text-white/85 bg-white/5 border border-primary-500/20 rounded-lg",
-                "no-underline transition-all duration-300",
-                "hover:bg-primary-500/15 hover:border-primary-500/40 hover:text-white"
+                "py-2 text-[15px] font-medium text-center",
+                "text-white/70 no-underline transition-all duration-300",
+                "hover:text-white"
               )}
             >
               FAQ
             </a>
 
+            <div className="w-full h-px bg-white/10 my-2" />
+
             <a
               href="https://new.ui2v.com/download"
               className={cn(
-                "px-7 py-3 text-[15px] font-bold text-white text-center",
+                "px-7 py-3 text-[15px] font-semibold text-white text-center",
                 "bg-gradient-to-r from-primary-400 to-primary-600 rounded-lg",
                 "no-underline transition-all duration-300",
                 "shadow-[0_4px_16px_rgba(192,132,252,0.4)]"
