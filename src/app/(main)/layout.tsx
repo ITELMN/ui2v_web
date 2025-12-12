@@ -5,14 +5,12 @@ import '@/resources/custom.css'
 
 import classNames from "classnames";
 
-import { baseURL, meta, fonts, effects, style, dataStyle } from "@/resources/once-ui.config";
-import { Meta, Schema,  Column, Flex, opacity, SpacingToken, Background} from "@once-ui-system/core";
+import { baseURL, meta, fonts, style, dataStyle } from "@/resources/once-ui.config";
+import { Meta, Schema, Column, Flex } from "@once-ui-system/core";
 import { Providers } from '@/components/Providers';
 import { Navbar } from '@/components/Navbar';
 import { DynamicTitle } from '@/components/DynamicTitle';
-import { CursorGlow } from '@/components/CursorGlow';
 import { BackgroundDecorations } from '@/components/BackgroundDecorations';
-import { GlobalAmbientBg } from '@/components/AiVideoDecorations';
 
 export async function generateMetadata() {
   return Meta.generate({
@@ -128,50 +126,7 @@ export default function RootLayout({
       <body suppressHydrationWarning style={{ margin: 0, padding: 0, position: 'relative', minHeight: '100vh', display: 'flex', flexDirection: 'column', width: '100%' }}>
         <Providers>
           <DynamicTitle />
-          <CursorGlow />
           <BackgroundDecorations />
-          <GlobalAmbientBg />
-          <Background
-            position="fixed"
-            mask={{
-              x: effects.mask.x,
-              y: effects.mask.y,
-              radius: effects.mask.radius,
-              cursor: effects.mask.cursor,
-            }}
-            gradient={{
-              display: effects.gradient.display,
-              opacity: effects.gradient.opacity as opacity,
-              x: effects.gradient.x,
-              y: effects.gradient.y,
-              width: effects.gradient.width,
-              height: effects.gradient.height,
-              tilt: effects.gradient.tilt,
-              colorStart: effects.gradient.colorStart,
-              colorEnd: effects.gradient.colorEnd,
-            }}
-            dots={{
-              display: effects.dots.display,
-              opacity: effects.dots.opacity as opacity,
-              size: effects.dots.size as SpacingToken,
-              color: effects.dots.color,
-            }}
-            grid={{
-              display: effects.grid.display,
-              opacity: effects.grid.opacity as opacity,
-              color: effects.grid.color,
-              width: effects.grid.width,
-              height: effects.grid.height,
-            }}
-            lines={{
-              display: effects.lines.display,
-              opacity: effects.lines.opacity as opacity,
-              size: effects.lines.size as SpacingToken,
-              thickness: effects.lines.thickness,
-              angle: effects.lines.angle,
-              color: effects.lines.color,
-            }}
-          />
           <Navbar />
           <Column fillWidth style={{ position: 'relative', zIndex: 1, background: 'transparent' }}>
             {children}

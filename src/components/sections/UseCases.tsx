@@ -33,44 +33,75 @@ const UseCaseCard = React.forwardRef<HTMLDivElement, UseCaseCardProps>(
         ref={ref}
         className={cn(
           // Base styles
-          'flex flex-col items-center text-center p-8 rounded-2xl',
+          'group flex flex-col items-center text-center p-8 rounded-2xl',
+          'relative overflow-hidden',
           // Background and border
           'bg-white/[0.02] border border-white/5',
           // Hover effects with lift animation
           'hover:bg-primary-500/10 hover:border-primary-500/30',
-          'hover:-translate-y-2',
-          'transition-all duration-300',
+          'hover:-translate-y-3',
+          'hover:shadow-xl hover:shadow-primary-500/20',
+          'transition-all duration-500',
+          'cursor-pointer',
           className
         )}
       >
-        {/* Icon */}
+        {/* Radial gradient background on hover */}
+        <div className={cn(
+          'absolute inset-0',
+          'bg-gradient-radial from-primary-500/20 via-primary-500/5 to-transparent',
+          'opacity-0 group-hover:opacity-100',
+          'transition-opacity duration-500'
+        )} />
+
+        {/* Icon with enhanced effects */}
         <div
           className={cn(
+            'relative z-10',
             'w-16 h-16 flex items-center justify-center',
             'rounded-xl bg-primary-500/10 border border-primary-500/20',
             'text-primary-400 text-3xl',
-            'mb-4',
+            'mb-5',
             'group-hover:bg-primary-500/20 group-hover:border-primary-500/40',
-            'transition-all duration-300'
+            'group-hover:scale-110 group-hover:-rotate-6',
+            'transition-all duration-500',
+            'shadow-lg shadow-primary-500/0 group-hover:shadow-primary-500/30'
           )}
         >
           {useCase.icon}
         </div>
 
-        {/* Title */}
+        {/* Title with gradient on hover */}
         <h3
           className={cn(
+            'relative z-10',
             'text-xl font-semibold text-white mb-3',
-            'transition-colors duration-300'
+            'group-hover:bg-gradient-to-r group-hover:from-primary-300 group-hover:to-primary-500',
+            'group-hover:bg-clip-text group-hover:text-transparent',
+            'transition-all duration-300'
           )}
         >
           {useCase.title}
         </h3>
 
         {/* Description */}
-        <p className="text-sm text-neutral-400 leading-relaxed">
+        <p className={cn(
+          'relative z-10',
+          'text-sm text-neutral-400 leading-relaxed',
+          'group-hover:text-neutral-300',
+          'transition-colors duration-300'
+        )}>
           {useCase.description}
         </p>
+        
+        {/* Bottom accent line */}
+        <div className={cn(
+          'absolute bottom-0 left-1/2 -translate-x-1/2',
+          'w-0 h-1 bg-gradient-to-r from-primary-400 to-primary-600',
+          'group-hover:w-3/4',
+          'transition-all duration-500',
+          'rounded-full'
+        )} />
       </div>
     );
   }

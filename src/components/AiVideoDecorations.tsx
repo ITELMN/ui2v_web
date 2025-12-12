@@ -164,7 +164,7 @@ export const ProvidersAnim = () => {
   );
 };
 
-// 全局鼠标光斑/浮动球
+// 全局鼠标光斑/浮动球 - 已禁用顶部主光斑
 export const GlobalAmbientBg = () => {
   return (
     <div style={{
@@ -177,18 +177,7 @@ export const GlobalAmbientBg = () => {
       pointerEvents: 'none',
       overflow: 'hidden'
     }}>
-      {/* 顶部主光斑 */}
-      <div style={{
-        position: 'absolute',
-        top: '-20%',
-        left: '50%',
-        transform: 'translateX(-50%)',
-        width: '80vw',
-        height: '80vw',
-        background: 'radial-gradient(circle, rgba(139, 92, 246, 0.08) 0%, transparent 70%)',
-        filter: 'blur(60px)',
-        opacity: 0.6
-      }} />
+      {/* 顶部主光斑 - 已移除 */}
       
       {/* 浮动光斑 1 */}
       <div style={{

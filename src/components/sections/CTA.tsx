@@ -59,26 +59,36 @@ export const CTA = React.forwardRef<HTMLElement, CTAProps>(
       <section
         ref={ref}
         className={cn(
-          'relative py-24 lg:py-32',
+          'relative py-24 lg:py-32 overflow-hidden',
           className
         )}
         {...props}
       >
-        {/* Background gradient effect */}
+        {/* Animated background gradient */}
         <div className={cn(
           'absolute inset-0',
           'bg-gradient-to-b from-primary-400/10 via-primary-600/5 to-transparent',
           'pointer-events-none'
         )} />
+        
+        {/* Radial gradient overlay */}
+        <div className={cn(
+          'absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2',
+          'w-[800px] h-[800px]',
+          'bg-gradient-radial from-primary-500/20 via-primary-500/5 to-transparent',
+          'pointer-events-none',
+          'animate-pulse'
+        )} />
 
-        <Container size="lg">
+        <Container size="lg" className="relative z-10">
           <div className="max-w-4xl mx-auto text-center">
-            {/* Title */}
+            {/* Title with enhanced gradient */}
             <h2
               className={cn(
                 'text-4xl lg:text-6xl font-bold tracking-tight mb-6',
-                'bg-gradient-to-r from-primary-400 to-primary-600',
-                'bg-clip-text text-transparent'
+                'bg-gradient-to-br from-white via-primary-300 to-primary-500',
+                'bg-clip-text text-transparent',
+                'drop-shadow-lg'
               )}
             >
               {title}
@@ -86,12 +96,12 @@ export const CTA = React.forwardRef<HTMLElement, CTAProps>(
 
             {/* Subtitle */}
             {subtitle && (
-              <p className="text-lg lg:text-xl text-neutral-400 mb-12 leading-relaxed">
+              <p className="text-lg lg:text-xl text-neutral-300 mb-12 leading-relaxed max-w-2xl mx-auto">
                 {subtitle}
               </p>
             )}
 
-            {/* Prominent Download Button */}
+            {/* Prominent Download Button with enhanced effects */}
             <div className="flex justify-center mb-12">
               <Button
                 variant="primary"
@@ -100,20 +110,33 @@ export const CTA = React.forwardRef<HTMLElement, CTAProps>(
                 className={cn(
                   'group relative',
                   'text-xl px-12 py-6',
-                  'shadow-2xl shadow-primary-500/30',
-                  'hover:shadow-primary-500/50',
+                  'shadow-2xl shadow-primary-500/40',
+                  'hover:shadow-primary-500/60',
                   'hover:scale-110',
-                  'transition-all duration-300'
+                  'transition-all duration-300',
+                  'animate-pulse hover:animate-none'
                 )}
               >
-                <span className="relative z-10">{downloadText}</span>
+                <span className="relative z-10 flex items-center gap-3">
+                  {downloadText}
+                  <span className="group-hover:translate-x-1 transition-transform duration-300">
+                    ↓
+                  </span>
+                </span>
                 
-                {/* Glow effect on hover */}
+                {/* Multiple glow layers */}
                 <div className={cn(
                   'absolute inset-0 rounded-lg',
                   'bg-gradient-to-r from-primary-400 to-primary-600',
+                  'opacity-0 group-hover:opacity-30',
+                  'blur-2xl transition-opacity duration-300'
+                )} />
+                
+                <div className={cn(
+                  'absolute inset-0 rounded-lg',
+                  'bg-gradient-to-r from-accent-400 to-primary-600',
                   'opacity-0 group-hover:opacity-20',
-                  'blur-xl transition-opacity duration-300'
+                  'blur-xl transition-opacity duration-500'
                 )} />
               </Button>
             </div>

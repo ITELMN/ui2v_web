@@ -24,6 +24,7 @@ export function BackgroundDecorations() {
         overflow: "hidden",
       }}
     >
+
       {/* Top Right Abstract Shape (UI representation) */}
       <svg
         width="600"

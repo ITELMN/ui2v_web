@@ -34,23 +34,38 @@ const CapabilityItem = React.forwardRef<HTMLDivElement, CapabilityItemProps>(
         ref={ref}
         className={cn(
           // Base styles
-          'relative flex items-start gap-4 p-6 rounded-xl overflow-hidden',
+          'group relative flex items-start gap-4 p-6 rounded-xl overflow-hidden',
           // Background and border
           'bg-white/[0.02] border border-white/5',
           // Hover effects
           'hover:bg-primary-500/5 hover:border-primary-500/20',
+          'hover:shadow-lg hover:shadow-primary-500/10',
           'transition-all duration-300',
+          'cursor-pointer',
           className
         )}
       >
         {/* Decoration (optional background animation) */}
         {capability.decoration && (
-          <div className="absolute bottom-0 right-0 opacity-30 pointer-events-none">
+          <div className={cn(
+            'absolute bottom-0 right-0 opacity-20',
+            'group-hover:opacity-40',
+            'transition-opacity duration-300',
+            'pointer-events-none'
+          )}>
             {capability.decoration}
           </div>
         )}
+        
+        {/* Gradient overlay on hover */}
+        <div className={cn(
+          'absolute inset-0',
+          'bg-gradient-to-r from-primary-500/0 via-primary-500/5 to-transparent',
+          'opacity-0 group-hover:opacity-100',
+          'transition-opacity duration-300'
+        )} />
 
-        {/* Icon */}
+        {/* Icon with enhanced effects */}
         <div
           className={cn(
             'relative z-10 flex-shrink-0',
@@ -58,26 +73,44 @@ const CapabilityItem = React.forwardRef<HTMLDivElement, CapabilityItemProps>(
             'rounded-lg bg-primary-500/10 border border-primary-500/20',
             'text-primary-400 text-2xl',
             'group-hover:bg-primary-500/20 group-hover:border-primary-500/40',
-            'transition-all duration-300'
+            'group-hover:scale-110',
+            'transition-all duration-300',
+            'shadow-lg shadow-primary-500/0 group-hover:shadow-primary-500/20'
           )}
         >
           {capability.icon}
         </div>
 
         {/* Text Content */}
-        <div className="relative z-10 flex-1 flex flex-col gap-1">
+        <div className="relative z-10 flex-1 flex flex-col gap-1.5">
           <strong
             className={cn(
-              'text-base font-semibold',
-              'bg-gradient-to-r from-primary-400 to-primary-600',
-              'bg-clip-text text-transparent'
+              'text-lg font-semibold',
+              'bg-gradient-to-r from-primary-300 to-primary-500',
+              'bg-clip-text text-transparent',
+              'group-hover:from-primary-200 group-hover:to-primary-400',
+              'transition-all duration-300'
             )}
           >
             {capability.title}
           </strong>
-          <span className="text-sm text-neutral-400 leading-relaxed">
+          <span className={cn(
+            'text-sm text-neutral-400 leading-relaxed',
+            'group-hover:text-neutral-300',
+            'transition-colors duration-300'
+          )}>
             {capability.description}
           </span>
+        </div>
+        
+        {/* Arrow indicator */}
+        <div className={cn(
+          'absolute top-6 right-6',
+          'text-primary-500 opacity-0 group-hover:opacity-100',
+          'transform translate-x-2 group-hover:translate-x-0',
+          'transition-all duration-300'
+        )}>
+          →
         </div>
       </div>
     );

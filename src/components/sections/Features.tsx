@@ -34,13 +34,14 @@ const FeatureCard = React.forwardRef<HTMLDivElement, FeatureCardProps>(
         ref={ref}
         className={cn(
           // Base styles
-          'group relative p-8 rounded-2xl',
+          'group relative p-8 rounded-2xl overflow-hidden',
           // Background and border
           'bg-white/[0.02] border border-white/5',
           // Hover effects
           'hover:bg-white/[0.04] hover:border-primary-500/30',
-          'transition-all duration-300',
-          'hover:-translate-y-2',
+          'transition-all duration-500',
+          'hover:-translate-y-3',
+          'hover:shadow-2xl hover:shadow-primary-500/20',
           className
         )}
       >
@@ -48,45 +49,69 @@ const FeatureCard = React.forwardRef<HTMLDivElement, FeatureCardProps>(
         {feature.gradient && (
           <div
             className={cn(
-              'absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-10',
-              'transition-opacity duration-300',
+              'absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-20',
+              'transition-opacity duration-500',
               feature.gradient
             )}
           />
         )}
+        
+        {/* Animated border glow */}
+        <div className={cn(
+          'absolute inset-0 rounded-2xl',
+          'bg-gradient-to-r from-primary-500/0 via-primary-500/50 to-primary-500/0',
+          'opacity-0 group-hover:opacity-100',
+          'transition-opacity duration-500',
+          'blur-sm'
+        )} />
 
         {/* Content */}
         <div className="relative z-10 flex flex-col gap-4">
-          {/* Icon */}
+          {/* Icon with enhanced effects */}
           <div
             className={cn(
-              'w-12 h-12 flex items-center justify-center',
+              'w-14 h-14 flex items-center justify-center',
               'rounded-xl bg-primary-500/10 border border-primary-500/20',
               'text-primary-400 text-2xl',
               'group-hover:bg-primary-500/20 group-hover:border-primary-500/40',
-              'group-hover:scale-110',
-              'transition-all duration-300'
+              'group-hover:scale-110 group-hover:rotate-3',
+              'transition-all duration-500',
+              'shadow-lg shadow-primary-500/0 group-hover:shadow-primary-500/30'
             )}
           >
             {feature.icon}
           </div>
 
-          {/* Title */}
+          {/* Title with gradient on hover */}
           <h3
             className={cn(
               'text-2xl font-semibold text-white',
-              'group-hover:text-primary-300',
-              'transition-colors duration-300'
+              'group-hover:bg-gradient-to-r group-hover:from-primary-300 group-hover:to-primary-500',
+              'group-hover:bg-clip-text group-hover:text-transparent',
+              'transition-all duration-300'
             )}
           >
             {feature.title}
           </h3>
 
           {/* Description */}
-          <p className="text-base text-neutral-400 leading-relaxed">
+          <p className={cn(
+            'text-base text-neutral-400 leading-relaxed',
+            'group-hover:text-neutral-300',
+            'transition-colors duration-300'
+          )}>
             {feature.description}
           </p>
         </div>
+        
+        {/* Corner accent */}
+        <div className={cn(
+          'absolute top-0 right-0 w-20 h-20',
+          'bg-gradient-to-br from-primary-500/20 to-transparent',
+          'rounded-bl-full',
+          'opacity-0 group-hover:opacity-100',
+          'transition-opacity duration-500'
+        )} />
       </div>
     );
   }

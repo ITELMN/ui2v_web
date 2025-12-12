@@ -133,6 +133,17 @@ const config: Config = {
         "ease-in": "cubic-bezier(0.4, 0, 1, 1)",
         "ease-in-out": "cubic-bezier(0.4, 0, 0.2, 1)",
       },
+      backgroundImage: {
+        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
+        "gradient-conic": "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+        "gradient-shimmer": "linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent)",
+      },
+      boxShadow: {
+        "glow-sm": "0 0 10px rgba(168, 85, 247, 0.3)",
+        "glow": "0 0 20px rgba(168, 85, 247, 0.4)",
+        "glow-lg": "0 0 30px rgba(168, 85, 247, 0.5)",
+        "glow-accent": "0 0 20px rgba(6, 182, 212, 0.4)",
+      },
     },
   },
   plugins: [],

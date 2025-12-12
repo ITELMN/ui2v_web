@@ -26,6 +26,7 @@ import {
 } from "@/components/NewAiDecorations";
 import { ProcessFlowAnim } from "@/components/ProcessFlowAnim";
 import { AiLogicIcon, LocalLogicIcon, EasyLogicIcon } from "@/components/HeroFlowAnim";
+import RippleGrid from "@/components/RippleGrid";
 import { 
   FaDownload, 
   FaRobot, 
@@ -51,6 +52,32 @@ export default function Home() {
 
   return (
     <div className={`${styles.pageContainer} bg-dot-grid`}>
+      {/* RippleGrid Background */}
+      <div style={{ 
+        position: 'fixed', 
+        top: '50%', 
+        left: '50%', 
+        transform: 'translate(-50%, -50%)',
+        width: '1400px', 
+        height: '1400px', 
+        zIndex: 0, 
+        pointerEvents: 'none' 
+      }}>
+        <RippleGrid 
+          enableRainbow={false}
+          gridColor="#6366f1"
+          rippleIntensity={0.08}
+          gridSize={8.0}
+          gridThickness={12.0}
+          fadeDistance={1.2}
+          vignetteStrength={1.5}
+          glowIntensity={0.3}
+          opacity={0.6}
+          gridRotation={0}
+          mouseInteraction={true}
+          mouseInteractionRadius={1.5}
+        />
+      </div>
       {/* <GlobalAmbientBg /> */}
       {/* Hero Section - 全新设计 */}
       <section className={styles.heroSection}>

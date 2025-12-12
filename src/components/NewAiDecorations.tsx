@@ -58,6 +58,18 @@ export const PromptProcessingAnim = ({ className, style }: { className?: string,
   );
 };
 
+// Pre-computed random values for consistent SSR/client rendering
+const DIFFUSION_GRID_VALUES = Array.from({ length: 64 }, (_, i) => {
+  // Use index-based pseudo-random for consistency
+  const seed = i * 2654435761;
+  const rand1 = ((seed >> 16) & 0xFF) / 255;
+  const rand2 = ((seed >> 8) & 0xFF) / 255;
+  return {
+    x: rand1 * 20 - 10,
+    y: rand2 * 20 - 10
+  };
+});
+
 // 2. Diffusion Grid Animation
 // Visualizes noise turning into structure
 export const DiffusionGridAnim = ({ className, style }: { className?: string, style?: React.CSSProperties }) => {
@@ -80,6 +92,7 @@ export const DiffusionGridAnim = ({ className, style }: { className?: string, st
         const col = i % 8;
         const x = col * 25 + 12.5;
         const y = row * 25 + 12.5;
+        const { x: randX, y: randY } = DIFFUSION_GRID_VALUES[i];
         return (
           <rect 
             key={i} 
@@ -95,7 +108,7 @@ export const DiffusionGridAnim = ({ className, style }: { className?: string, st
             <animateTransform 
                 attributeName="transform" 
                 type="translate" 
-                values={`${Math.random()*20-10} ${Math.random()*20-10}; 0 0; 0 0`} 
+                values={`${randX} ${randY}; 0 0; 0 0`} 
                 dur="4s" 
                 repeatCount="indefinite" 
             />
