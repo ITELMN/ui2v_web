@@ -23,6 +23,16 @@ export default function RootLayout({
         {/* Mobile viewport optimization */}
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
         
+        {/* Critical CSS for preventing white flash */}
+        <style dangerouslySetInnerHTML={{
+          __html: `
+            html, body {
+              background-color: #030008 !important;
+              color: white;
+            }
+          `
+        }} />
+        
         {/* Umami Analytics */}
         <script
           defer
@@ -37,6 +47,8 @@ export default function RootLayout({
                 try {
                   const root = document.documentElement;
                   root.setAttribute('data-theme', 'dark');
+                  document.documentElement.style.backgroundColor = '#030008';
+                  document.body.style.backgroundColor = '#030008';
                 } catch (e) {
                   console.error('Failed to initialize theme:', e);
                 }
